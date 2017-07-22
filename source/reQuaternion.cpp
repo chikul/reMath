@@ -357,14 +357,14 @@ re::Quaternion re::Quaternion::operator * (const Quaternion& quaternion) const
 
 
 
-re::Quaternion operator * (float value, const re::Quaternion& quaternion)
+re::Quaternion re::operator * (float value, const re::Quaternion& quaternion)
 {
 	return re::Quaternion(quaternion.x * value, quaternion.y * value, quaternion.z * value, quaternion.w * value);
 }
 
 
 
-re::Quaternion operator * (const re::Quaternion& quaternion, float value)
+re::Quaternion re::operator * (const re::Quaternion& quaternion, float value)
 {
 	return re::Quaternion(quaternion.x * value, quaternion.y * value, quaternion.z * value, quaternion.w * value);
 }

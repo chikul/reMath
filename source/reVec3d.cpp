@@ -190,14 +190,14 @@ re::Vec3d re::Vec3d::operator - (const Vec3d& vector) const
 
 
 
-re::Vec3d operator * (float value, const re::Vec3d& vector)
+re::Vec3d re::operator * (float value, const re::Vec3d& vector)
 {
 	return re::Vec3d(vector.x * value, vector.y * value, vector.z * value);
 }
 
 
 
-re::Vec3d operator * (const re::Vec3d& vector, float value)
+re::Vec3d re::operator * (const re::Vec3d& vector, float value)
 {
 	return re::Vec3d(vector.x * value, vector.y * value, vector.z * value);
 }

@@ -185,14 +185,14 @@ re::Vec2d re::Vec2d::operator - (const Vec2d& vector) const
 
 
 
-re::Vec2d operator * (float value, const re::Vec2d& vector)
+re::Vec2d re::operator * (float value, const re::Vec2d& vector)
 {
 	return re::Vec2d(vector.x * value, vector.y * value);
 }
 
 
 
-re::Vec2d operator * (const re::Vec2d& vector, float value)
+re::Vec2d re::operator * (const re::Vec2d& vector, float value)
 {
 	return re::Vec2d(vector.x * value, vector.y * value);
 }

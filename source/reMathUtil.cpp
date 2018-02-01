@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reMathUtil.cpp
-// Project:		Razor Edge Classes
-// Description:	Implementation of Razor Edge math utility functions (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reMathUtil.cpp
+// Project:     Razor Edge Classes
+// Description: Implementation of Razor Edge math utility functions (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -57,7 +57,7 @@ unsigned char re::getLowNibble(unsigned char byte)
 
 
 
-re::Matrix re::perspective(float fovy, float aspect, float zNear, float zFar)
+re::Matrix4 re::perspective(float fovy, float aspect, float zNear, float zFar)
 {
 	float matrix[16];
 	memset(matrix, 0, sizeof(matrix));
@@ -70,5 +70,5 @@ re::Matrix re::perspective(float fovy, float aspect, float zNear, float zFar)
 	matrix[11] = -1.f;
 	matrix[14] = (2.f * zFar * zNear) / (zNear - zFar);
 
-	return Matrix(matrix);
+	return Matrix4(matrix);
 }

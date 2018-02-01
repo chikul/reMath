@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reQuaternion.h
-// Project:		Razor Edge Classes
-// Description:	Definition of Quaternion class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reQuaternion.h
+// Project:     Razor Edge Classes
+// Description: Definition of Quaternion class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -14,7 +14,7 @@
 namespace re
 {
 	class Vec3d;
-	class Matrix;
+	class Matrix4;
 
 	// Quaternion Class
 	class Quaternion
@@ -53,9 +53,9 @@ namespace re
 		Vec3d getEulers() const;
 
 		// Get rotation matrix from quaternion data
-		Matrix getMatrix() const; // TODO: Check ToMatrix in book
+		Matrix4 getMatrix() const; // TODO: Check ToMatrix in book
 
-								  // Get quaternion magnitutde
+		// Get quaternion magnitutde
 		float length() const;
 
 		// Normalize quaternion
@@ -149,9 +149,9 @@ namespace re
 		{
 			struct
 			{
-				float			x, y, z, w;
+				float x, y, z, w;
 			};
-			float			d[4];
+			float d[4];
 		};
 	};
 }

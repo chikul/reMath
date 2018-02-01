@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reMathUtil.h
-// Project:		Razor Edge Classes
-// Description:	Definition of Razor Edge math utility functions (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reMathUtil.h
+// Project:     Razor Edge Classes
+// Description: Definition of Razor Edge math utility functions (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,7 +16,7 @@ namespace re
 	// PI Value
 	const float PI = 3.14159265358979f;
 
-	class Matrix;
+	class Matrix4;
 
 	// Converts degrees to radians
 	float toRadians(float degrees);
@@ -40,7 +40,7 @@ namespace re
 	// <param name="zNear">distance from the viewer to the near clipping plane (always positive)</param>
 	// <param name="zFar">distance from the viewer to the far clipping plane (always positive)</param>
 	// <returns>Perspective projection matrix</returns>
-	Matrix perspective(float fovy, float aspect, float zNear = 0.1f, float zFar = 10000.0f);
+	Matrix4 perspective(float fovy, float aspect, float zNear = 0.1f, float zFar = 10000.0f);
 }
 
 #endif // __RE_MATH_UTIL__

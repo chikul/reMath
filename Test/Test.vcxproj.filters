@@ -15,50 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\reMath.h">
+    <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\reMathUtil.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\reQuaternion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\reVec2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\reVec3d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\reMatrix3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\reMatrix4.h">
+    <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\reMathUtil.cpp">
+    <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\reQuaternion.cpp">
+    <ClCompile Include="Vec2test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\reVec2d.cpp">
+    <ClCompile Include="Vec3Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\reVec3d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\reMatrix3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\reMatrix4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CHANGELOG.md" />
-    <None Include="README.md" />
   </ItemGroup>
 </Project>

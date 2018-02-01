@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reVec2d.h
-// Project:		Razor Edge Classes
-// Description:	Definition of Vec2d class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reVec2d.h
+// Project:     Razor Edge Classes
+// Description: Definition of Vec2d class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,10 +20,11 @@ namespace re
 		// Constructors
 		Vec2d();
 		Vec2d(const Vec2d& vector);
-		Vec2d(const Vec2d* vector);
-		Vec2d(float value);
-		Vec2d(float xValue, float yValue);
-		Vec2d(const float* vector);
+		explicit Vec2d(const Vec2d* vector);
+		explicit Vec2d(float value);
+		explicit Vec2d(float xValue, float yValue);
+		explicit Vec2d(const float* vector);
+		Vec2d(Vec2d&& vector) = default;
 
 		// Destructor
 		virtual ~Vec2d() = default;
@@ -70,6 +71,8 @@ namespace re
 		// Copy assignment operator
 		Vec2d& operator = (const Vec2d& vector);
 
+		// Move assignment operator
+		Vec2d& operator = (Vec2d&& vector) = default;
 
 		// Arithmetic operators
 		//---------------------
@@ -116,10 +119,10 @@ namespace re
 		//---------------------
 
 		// Returns a pointer to vector data
-		operator float* ();
+		explicit operator float* ();
 
 		// Returns a constant pointer to vector data
-		operator const float* () const;
+		explicit operator const float* () const;
 
 	public:
 		union

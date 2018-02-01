@@ -1,32 +1,32 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reMatrix.h
-// Project:		Razor Edge Classes
-// Description:	Definition of Matrix class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reMatrix4.h
+// Project:     Razor Edge Classes
+// Description: Definition of Matrix4 class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __RE_MATH_MATRIX__
-#define __RE_MATH_MATRIX__
+#ifndef __RE_MATH_MATRIX4__
+#define __RE_MATH_MATRIX4__
 
 namespace re
 {
 	class Vec3d;
 
-	// Matrix Class
-	class Matrix
+	// Matrix4 Class
+	class Matrix4
 	{
 	public:
 		// Constructors
-		Matrix();
-		Matrix(const Matrix& matrix);
-		Matrix(const Matrix* matrix);
-		Matrix(const float* matrix);
+		Matrix4();
+		Matrix4(const Matrix4& matrix);
+		Matrix4(const Matrix4* matrix);
+		Matrix4(const float* matrix);
 
 		// Destructor
-		virtual ~Matrix() = default;
+		virtual ~Matrix4() = default;
 
 	public:
 		// Load NULL matrix
@@ -78,10 +78,10 @@ namespace re
 		void transpose();
 
 		// Returns inversed matrix leaving original intact
-		Matrix toInversed() const;
+		Matrix4 toInversed() const;
 
 		// Returns transposed matrix leaving original intact
-		Matrix toTransposed() const;
+		Matrix4 toTransposed() const;
 
 		// Apply matrix rotation to a vactor
 		void rotate(float& x, float& y, float& z) const;
@@ -117,31 +117,31 @@ namespace re
 		//---------------------
 
 		// Equal to operator - performs by byte comparison of matrices data
-		bool operator == (const Matrix& matrix);
+		bool operator == (const Matrix4& matrix);
 
 		// Not equal to operator - performs by byte comparison of matrices data
-		bool operator != (const Matrix& matrix);
+		bool operator != (const Matrix4& matrix);
 
 
 		// Assignment operators
 		//---------------------
 
 		// Copy assignment operator
-		Matrix& operator = (const Matrix& matrix);
+		Matrix4& operator = (const Matrix4& matrix);
 
 
 		// Arithmetic operators
 		//---------------------
 
 		// Returns result of matrices multiplication
-		Matrix operator * (const Matrix& matrix);
+		Matrix4 operator * (const Matrix4& matrix);
 
 
 		// Compound assignment operators
 		//------------------------------
 
 		// Performs matrices multiplication
-		void operator *= (const Matrix& matrix);
+		void operator *= (const Matrix4& matrix);
 
 
 		// Conversion operators

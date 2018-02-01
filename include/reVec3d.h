@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reVec3d.h
-// Project:		Razor Edge Classes
-// Description:	Definition of Vec3d class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reVec3d.h
+// Project:     Razor Edge Classes
+// Description: Definition of Vec3d class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -13,7 +13,7 @@
 
 namespace re
 {
-	class Matrix;
+	class Matrix4;
 
 	// Vec3d Class
 	class Vec3d
@@ -92,10 +92,10 @@ namespace re
 		friend Vec3d operator * (const Vec3d& vector, float value);
 
 		// Returns result of vector by matrix multiplication
-		Vec3d operator * (const Matrix& matrix) const;
+		Vec3d operator * (const Matrix4& matrix) const;
 
 		// Returns result of vector by matrix multiplication
-		Vec3d operator * (const Matrix* matrix) const;
+		Vec3d operator * (const Matrix4* matrix) const;
 
 
 		// Compound assignment operators
@@ -117,10 +117,10 @@ namespace re
 		void operator *= (float value);
 
 		// Transforms vector by multiplying it by matrix
-		void operator *= (const Matrix& matrix);
+		void operator *= (const Matrix4& matrix);
 
 		// Transforms vector by multiplying it by matrix
-		void operator *= (const Matrix* matrix);
+		void operator *= (const Matrix4* matrix);
 
 		// Divides every vector component by value
 		void operator /= (float value);

@@ -1,15 +1,15 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reVec3d.cpp
-// Project:		Razor Edge Classes
-// Description:	Implementation of Vec3d class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reVec3d.cpp
+// Project:     Razor Edge Classes
+// Description: Implementation of Vec3d class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "reVec3d.h"
-#include "reMatrix.h"
+#include "reMatrix4.h"
 #include <string.h>
 #include <math.h>
 
@@ -204,7 +204,7 @@ re::Vec3d re::operator * (const re::Vec3d& vector, float value)
 
 
 
-re::Vec3d re::Vec3d::operator * (const re::Matrix& matrix) const
+re::Vec3d re::Vec3d::operator * (const re::Matrix4& matrix) const
 {
 	const float* data = matrix;
 	return re::Vec3d(
@@ -215,12 +215,12 @@ re::Vec3d re::Vec3d::operator * (const re::Matrix& matrix) const
 
 
 
-re::Vec3d re::Vec3d::operator * (const Matrix* matrix) const
+re::Vec3d re::Vec3d::operator * (const Matrix4* matrix) const
 {
 	if (!matrix)
 		return re::Vec3d();
 
-	const float* data = (Matrix)matrix;
+	const float* data = (Matrix4)matrix;
 	return re::Vec3d(
 		(x*data[0] + y*data[4] + z*data[8] + data[12]),
 		(x*data[1] + y*data[5] + z*data[9] + data[13]),
@@ -274,7 +274,7 @@ void re::Vec3d::operator *= (float value)
 
 
 
-void re::Vec3d::operator *= (const Matrix& matrix)
+void re::Vec3d::operator *= (const Matrix4& matrix)
 {
 	double newValues[3];
 	const float* data = matrix;
@@ -290,13 +290,13 @@ void re::Vec3d::operator *= (const Matrix& matrix)
 
 
 
-void re::Vec3d::operator *= (const Matrix* matrix)
+void re::Vec3d::operator *= (const Matrix4* matrix)
 {
 	if (!matrix)
 		return;
 
 	double newValues[3];
-	const float* data = (Matrix)matrix;
+	const float* data = (Matrix4)matrix;
 
 	newValues[0] = x*data[0] + y*data[4] + z*data[8] + data[12];
 	newValues[1] = x*data[1] + y*data[5] + z*data[9] + data[13];

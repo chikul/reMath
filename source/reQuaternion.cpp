@@ -1,16 +1,16 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reQuaternion.cpp
-// Project:		Razor Edge Classes
-// Description:	Implementation of Quaternion class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reQuaternion.cpp
+// Project:     Razor Edge Classes
+// Description: Implementation of Quaternion class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "reQuaternion.h"
 #include "reVec3d.h"
-#include "reMatrix.h"
+#include "reMatrix4.h"
 #include <string.h>
 #include <math.h>
 
@@ -178,7 +178,7 @@ re::Vec3d re::Quaternion::getEulers() const
 
 
 
-re::Matrix re::Quaternion::getMatrix() const
+re::Matrix4 re::Quaternion::getMatrix() const
 {
 	float x2, xx, xy, xz, xw, y2, yy, yz, yw, z2, zz, zw;
 
@@ -188,7 +188,7 @@ re::Matrix re::Quaternion::getMatrix() const
 	xz = x * z2;	yw = w * y2;
 	xw = w * x2;
 
-	Matrix result;
+	Matrix4 result;
 	float* data = result;
 
 	data[0] = 1.0f - (yy + zz);	// Row 1

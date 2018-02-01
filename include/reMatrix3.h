@@ -1,21 +1,24 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Name:        Razor Edge Math Library
-// File:        reMath.h
+// File:        reMatrix3.h
 // Project:     Razor Edge Classes
-// Description: Cummulative include of Razor Edge math classes
+// Description: Definition of Matrix3 class (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef __RE_MATH__
-#define __RE_MATH__
+#ifndef __RE_MATH_MATRIX3__
+#define __RE_MATH_MATRIX3__
 
-#include "reVec2d.h"
-#include "reVec3d.h"
-#include "reMatrix4.h"
-#include "reQuaternion.h"
-#include "reMathUtil.h"
+namespace re
+{
+	class Vec3d;
 
-#endif // __RE_MATH__
+	// Matrix4 Class
+	class Matrix3
+	{
+	};
+}
+
+#endif // __RE_MATH_MATRIX3__

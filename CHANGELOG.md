@@ -3,9 +3,25 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.0] 05.02.2018
+### Added
+* `Matrix3` class to represent rotation-only matrix.
+* Created an MSVS solution.
+* Unit test project and `Vec2d` coverage.
+* `lookAt()` function to `reMathUtil` which calculates the view matrix.
+* Added subscript (array access) operators to all classes.
+* Added quaternion by matrix multiplication.
+
+### Changed
+* Renamed `Matrix` to `Matrix4` as we now have `Matrix3` in addition.
+* Updated all classes to the latest C++ standards.
+
+### Fixed
+* Matrix by matrix multiplication for some reason was nullifying translation.
+
 ## [1.0.1] - 22.07.2017
 ### Fixed
-* Inorrect definition of friend operators.
+* Incorrect definition of friend operators.
 
 ## [1.0.0] - 22.07.2017
 ### Added

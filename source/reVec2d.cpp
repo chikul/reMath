@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reVec2d.cpp
-// Project:		Razor Edge Classes
-// Description:	Implementation of Vec2d class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reVec2d.cpp
+// Project:     Razor Edge Classes
+// Description: Implementation of Vec2d class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -101,7 +101,7 @@ bool re::Vec2d::isParallel(const Vec2d& vector) const
 
 void re::Vec2d::normalize()
 {
-	float d = length();
+	const float d = length();
 
 	if (d)
 	{
@@ -257,4 +257,18 @@ re::Vec2d::operator float* ()
 re::Vec2d::operator const float* () const
 {
 	return d;
+}
+
+
+
+float & re::Vec2d::operator[](size_t index)
+{
+	return d[index];
+}
+
+
+
+const float & re::Vec2d::operator[](size_t index) const
+{
+	return d[index];
 }

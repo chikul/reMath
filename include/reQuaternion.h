@@ -1,10 +1,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// File:		reQuaternion.h
-// Project:		Razor Edge Classes
-// Description:	Definition of Quaternion class (Math Module)
-// Copyright:	Copyright © 2004++ REGLabs
-// Author:		Pavel Chikul
+// File:        reQuaternion.h
+// Project:     Razor Edge Classes
+// Description: Definition of Quaternion class (Math Module)
+// Copyright:   Copyright © 2004++ REGLabs
+// Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -14,144 +14,157 @@
 namespace re
 {
 	class Vec3d;
-	class Matrix;
+	class Matrix4;
 
-	// Quaternion Class
+	// Quaternion Class.
 	class Quaternion
 	{
 	public:
-		// Constructors
+		// Constructors.
 		Quaternion();
 		Quaternion(const Quaternion& quaternion);
-		Quaternion(const Quaternion* quaternion);
+		explicit Quaternion(const Quaternion* quaternion);
 		Quaternion(float xValue, float yValue, float zValue, float wValue);
-		Quaternion(const float* quaternion);
-
-		// Destructor
+		explicit Quaternion(const float* quaternion);
+		Quaternion(Quaternion&& quaternion) = default;
+		
+		// Destructor.
 		virtual ~Quaternion() = default;
 
 	public:
-		// Set quaternion data
+		// Set quaternion data.
 		void set(const Quaternion& quaternion);
 		void set(float xValue, float yValue, float zValue, float wValue);
 		void set(const float* quaternion);
 
-		// Set quaternion data from three components (X, Y, Z) and calculate W
+		// Set quaternion data from three components (X, Y, Z) and calculate W.
 		void set(float xValue, float yValue, float zValue);
 		void set(const Vec3d& vector);
 
-		// Get quaternion from Euler angles
+		// Get quaternion from Euler angles.
 		static Quaternion fromEulers(Vec3d& vector);
 		static Quaternion fromEulerXRotation(float angle);
 		static Quaternion fromEulerYRotation(float angle);
 		static Quaternion fromEulerZRotation(float angle);
 
-		// Calculate the W component when only X, Y, and Z are given
+		// Calculate the W component when only X, Y, and Z are given.
 		void computeW();
 
-		// Calculate Euler angles from quaternion data
+		// Calculate Euler angles from quaternion data.
 		Vec3d getEulers() const;
 
-		// Get rotation matrix from quaternion data
-		Matrix getMatrix() const; // TODO: Check ToMatrix in book
+		// Get rotation matrix from quaternion data.
+		Matrix4 getMatrix() const; // TODO: Check ToMatrix in book
 
-								  // Get quaternion magnitutde
+		// Get quaternion magnitutde.
 		float length() const;
 
-		// Normalize quaternion
+		// Normalize quaternion.
 		void normalize();
 
-		// Negate quaternion
+		// Negate quaternion.
 		void negate();
 
-		// Return the result of Spherical Linear Interpolation between two quaternions scaled by factor
+		// Return the result of Spherical Linear Interpolation between two quaternions scaled by factor.
 		Quaternion slerp(const Quaternion& quaternion, float scale) const;
 
-		// Return the result of Linear Interpolation between two quaternions scaled by factor
+		// Return the result of Linear Interpolation between two quaternions scaled by factor.
 		Quaternion lerp(const Quaternion& quaternion, float scale) const;
 
-		// Calculate dot product and return the result
+		// Calculate dot product and return the result.
 		float dot(const Quaternion& quaternion) const;
 
 
-		// Comparison operators
-		//---------------------
+		// Comparison operators.
+		//----------------------
 
-		// Equal to operator - performs by value comparison of quaternion data
+		// Equal to operator - performs by value comparison of quaternion data.
 		bool operator == (const Quaternion& quaternion) const;
 
-		// Not equal to operator - performs by value comparison of quaternion data
+		// Not equal to operator - performs by value comparison of quaternion data.
 		bool operator != (const Quaternion& quaternion) const;
 
 
-		// Assignment operators
-		//---------------------
+		// Assignment operators.
+		//----------------------
 
-		// Copy assignment operator
+		// Copy assignment operator.
 		Quaternion& operator = (const Quaternion& quaternion);
 
+		// Move assignment operator.
+		Quaternion& operator = (Quaternion&& quaternion) = default;
 
-		// Arithmetic operators
-		//---------------------
 
-		// Unary minus - Negates quaternion
+		// Arithmetic operators.
+		//----------------------
+
+		// Unary minus - Negates quaternion.
 		Quaternion operator - () const;
 
-		// Returns result of two quaternions addition
+		// Returns result of two quaternions addition.
 		Quaternion operator + (const Quaternion& quaternion) const;
 
-		// Returns result of two quaternions substraction
+		// Returns result of two quaternions substraction.
 		Quaternion operator - (const Quaternion& quaternion) const;
 
-		// Returns result of two quaternions multiplication
+		// Returns result of two quaternions multiplication.
 		Quaternion operator * (const Quaternion& quaternion) const;
 
-		// Multiplies quaternion elements by value
+		// Multiplies quaternion elements by value.
 		friend Quaternion operator * (float value, const Quaternion& quaternion);
 
-		// Multiplies quaternion elements by value
+		// Multiplies quaternion elements by value.
 		friend Quaternion operator * (const Quaternion& quaternion, float value);
 
-		// Divides quaternion elements by value
+		// Divides quaternion elements by value.
 		Quaternion operator / (float value) const;
 
 
-		// Compound assignment operators
-		//------------------------------
+		// Compound assignment operators.
+		//-------------------------------
 
-		// Quaternion addition
+		// Quaternion addition.
 		Quaternion& operator += (const Quaternion& quaternion);
 
-		// Quaternion substraction
+		// Quaternion substraction.
 		Quaternion& operator -= (const Quaternion& quaternion);
 
-		// Quaternion multiplication
+		// Quaternion multiplication.
 		Quaternion& operator *= (const Quaternion& quaternion);
 
-		// Quaternion multiplication by value
+		// Quaternion multiplication by value.
 		Quaternion& operator *= (float value);
 
-		// Quaternion substraction by value
+		// Quaternion substraction by value.
 		Quaternion& operator /= (float value);
 
 
-		// Conversion operators
+		// Conversion operators.
+		//----------------------
+
+		// Returns a pointer to vector data.
+		explicit operator float* ();
+
+		// Returns a constant pointer to vector data.
+		explicit operator const float* () const;
+
+		// Subscript operators.
 		//---------------------
 
-		// Returns a pointer to vector data
-		operator float* ();
+		// Data array access operator.
+		float& operator [] (size_t index);
 
-		// Returns a constant pointer to vector data
-		operator const float* () const;
+		// Constant data array access operator.
+		const float& operator [] (size_t index) const;
 
 	public:
 		union
 		{
 			struct
 			{
-				float			x, y, z, w;
+				float x, y, z, w;
 			};
-			float			d[4];
+			float d[4];
 		};
 	};
 }

@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.1.0] 05.02.2018
 ### Added
 * `Matrix3` class to represent rotation-only matrix.
 * Created an MSVS solution.
@@ -17,11 +17,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Updated all classes to the latest C++ standards.
 
 ### Fixed
-* Matrix rotation for some reason was nullifying translation.
+* Matrix by matrix multiplication for some reason was nullifying translation.
 
 ## [1.0.1] - 22.07.2017
 ### Fixed
-* Inorrect definition of friend operators.
+* Incorrect definition of friend operators.
 
 ## [1.0.0] - 22.07.2017
 ### Added

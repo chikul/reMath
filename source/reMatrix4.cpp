@@ -10,6 +10,7 @@
 
 #include "reMatrix4.h"
 #include "reVec3d.h"
+#include "reMatrix3.h"
 #include "reMathUtil.h"
 #include <string.h>
 #include <math.h>
@@ -52,6 +53,14 @@ re::Matrix4::Matrix4(const float* matrix)
 	memcpy(data_, matrix, sizeof(float) * 16);
 }
 
+re::Matrix4::Matrix4(const Matrix3 & matrix)
+{
+	loadIdentity();
+	memcpy(&data_[0], &matrix[0], sizeof(float) * 3);
+	memcpy(&data_[4], &matrix[3], sizeof(float) * 3);
+	memcpy(&data_[8], &matrix[6], sizeof(float) * 3);
+}
+
 
 
 void re::Matrix4::loadIdentity()
@@ -77,15 +86,15 @@ void re::Matrix4::set(const float* matrix)
 
 void re::Matrix4::setRotation(float x, float y, float z)
 {
-	float cx = cosf(x);						//	| 0  1  2  3|		|0-0  0-1  0-2  0-3|
-	float sx = sinf(x);						//	| 4  5  6  7|		|1-0  1-1  1-2  1-3|
-	float cy = cosf(y);						//	| 8  9 10 11|		|2-0  2-1  2-2  2-3|
-	float sy = sinf(y);						//	|12 13 14 15|		|3-0  3-1  3-2  3-3|
-	float cz = cosf(z);
-	float sz = sinf(z);						//	| 0  4  8 12|
-	float sxsy = sx * sy;					//	| 1	 5  9 13|
-	float cxsy = cx * sy;					//	| 2  6 10 14|
-											//	| 3  7 11 15|
+	const float cx = cosf(x);						//	| 0  1  2  3|		|0-0  0-1  0-2  0-3|
+	const float sx = sinf(x);						//	| 4  5  6  7|		|1-0  1-1  1-2  1-3|
+	const float cy = cosf(y);						//	| 8  9 10 11|		|2-0  2-1  2-2  2-3|
+	const float sy = sinf(y);						//	|12 13 14 15|		|3-0  3-1  3-2  3-3|
+	const float cz = cosf(z);
+	const float sz = sinf(z);						//	| 0  4  8 12|
+	const float sxsy = sx * sy;						//	| 1	 5  9 13|
+	const float cxsy = cx * sy;						//	| 2  6 10 14|
+													//	| 3  7 11 15|
 	data_[0] = cy * cz;						/* 0-0 \                      */
 	data_[1] = cy * sz;						/* 0-1	|- top row, 1-3 col.  */
 	data_[2] = -sy;							/* 0-2 /                      */
@@ -324,9 +333,9 @@ re::Matrix4 re::Matrix4::toTransposed() const
 
 void re::Matrix4::rotate(float& x, float& y, float& z) const
 {
-	float tx = x * data_[0] + y * data_[4] + z * data_[8];	// 0-0, 1-0, 2-0
-	float ty = x * data_[1] + y * data_[5] + z * data_[9];	// 0-1, 1-1, 2-1
-	float tz = x * data_[2] + y * data_[6] + z * data_[10];	// 0-2, 1-2, 2-2
+	const float tx = x * data_[0] + y * data_[4] + z * data_[8];	// 0-0, 1-0, 2-0
+	const float ty = x * data_[1] + y * data_[5] + z * data_[9];	// 0-1, 1-1, 2-1
+	const float tz = x * data_[2] + y * data_[6] + z * data_[10];	// 0-2, 1-2, 2-2
 	x = tx;
 	y = ty;
 	z = tz;
@@ -350,9 +359,9 @@ void re::Matrix4::rotate(Vec3d& vector) const
 
 void re::Matrix4::inverseRotate(float& x, float& y, float& z) const
 {
-	float tx = x * data_[0] + y * data_[1] + z * data_[2];	// 0-0, 0-1, 0-2
-	float ty = x * data_[4] + y * data_[5] + z * data_[6];	// 1-0, 1-1, 1-2
-	float tz = x * data_[8] + y * data_[9] + z * data_[10];	// 2-0, 2-1, 2-2
+	const float tx = x * data_[0] + y * data_[1] + z * data_[2];	// 0-0, 0-1, 0-2
+	const float ty = x * data_[4] + y * data_[5] + z * data_[6];	// 1-0, 1-1, 1-2
+	const float tz = x * data_[8] + y * data_[9] + z * data_[10];	// 2-0, 2-1, 2-2
 	x = tx;
 	y = ty;
 	z = tz;
@@ -464,16 +473,25 @@ void re::Matrix4::inverseScale(Vec3d& vector) const
 	inverseScale(vector.x, vector.y, vector.z);
 }
 
+re::Matrix3 re::Matrix4::rotationMatrix() const
+{
+	Matrix3 result;
+	memcpy(&result[0], &data_[0], sizeof(float) * 3);
+	memcpy(&result[3], &data_[4], sizeof(float) * 3);
+	memcpy(&result[6], &data_[8], sizeof(float) * 3);
+	return result;
+}
 
 
-bool re::Matrix4::operator == (const Matrix4& matrix)
+
+bool re::Matrix4::operator == (const Matrix4& matrix) const
 {
 	return !memcmp(data_, matrix.data_, sizeof(float) * 16);
 }
 
 
 
-bool re::Matrix4::operator != (const Matrix4& matrix)
+bool re::Matrix4::operator != (const Matrix4& matrix) const
 {
 	return memcmp(data_, matrix.data_, sizeof(float) * 16) != 0;
 }
@@ -490,7 +508,7 @@ re::Matrix4& re::Matrix4::operator = (const Matrix4& matrix)
 
 
 
-re::Matrix4 re::Matrix4::operator * (const Matrix4& matrix)
+re::Matrix4 re::Matrix4::operator * (const Matrix4& matrix) const
 {
 	Matrix4 result(this);
 	result *= matrix;
@@ -508,22 +526,22 @@ void re::Matrix4::operator *= (const Matrix4& matrix)
 	result[0] = m1[0] * m2[0] + m1[4] * m2[1] + m1[8] * m2[2];
 	result[1] = m1[1] * m2[0] + m1[5] * m2[1] + m1[9] * m2[2];
 	result[2] = m1[2] * m2[0] + m1[6] * m2[1] + m1[10] * m2[2];
-	result[3] = 0;
+	result[3] = m1[3] * m2[0] + m1[7] * m2[1] + m1[11] * m2[2];
 
 	result[4] = m1[0] * m2[4] + m1[4] * m2[5] + m1[8] * m2[6];
 	result[5] = m1[1] * m2[4] + m1[5] * m2[5] + m1[9] * m2[6];
 	result[6] = m1[2] * m2[4] + m1[6] * m2[5] + m1[10] * m2[6];
-	result[7] = 0;
+	result[7] = m1[3] * m2[4] + m1[7] * m2[5] + m1[11] * m2[6];
 
 	result[8] = m1[0] * m2[8] + m1[4] * m2[9] + m1[8] * m2[10];
 	result[9] = m1[1] * m2[8] + m1[5] * m2[9] + m1[9] * m2[10];
 	result[10] = m1[2] * m2[8] + m1[6] * m2[9] + m1[10] * m2[10];
-	result[11] = 0;
+	result[11] = m1[3] * m2[8] + m1[7] * m2[9] + m1[11] * m2[10];
 
 	result[12] = m1[0] * m2[12] + m1[4] * m2[13] + m1[8] * m2[14] + m1[12];
 	result[13] = m1[1] * m2[12] + m1[5] * m2[13] + m1[9] * m2[14] + m1[13];
 	result[14] = m1[2] * m2[12] + m1[6] * m2[13] + m1[10] * m2[14] + m1[14];
-	result[15] = 1;
+	result[15] = m1[3] * m2[12] + m1[7] * m2[13] + m1[11] * m2[14] + m1[15];
 
 	set(result);
 }
@@ -540,4 +558,14 @@ re::Matrix4::operator float* ()
 re::Matrix4::operator const float* () const
 {
 	return data_;
+}
+
+float & re::Matrix4::operator[](size_t index)
+{
+	return data_[index];
+}
+
+const float & re::Matrix4::operator[](size_t index) const
+{
+	return data_[index];
 }

@@ -14,6 +14,7 @@
 
 #include "reVec2d.h"
 #include "reVec3d.h"
+#include "reMatrix3.h"
 #include "reMatrix4.h"
 #include "reQuaternion.h"
 #include "reMathUtil.h"

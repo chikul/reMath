@@ -206,7 +206,7 @@ re::Vec3d re::operator * (const re::Vec3d& vector, float value)
 
 re::Vec3d re::Vec3d::operator * (const re::Matrix4& matrix) const
 {
-	const float* data = matrix;
+	const auto* data = static_cast<const float*>(matrix);
 	return re::Vec3d(
 		(x*data[0] + y*data[4] + z*data[8] + data[12]),
 		(x*data[1] + y*data[5] + z*data[9] + data[13]),
@@ -220,7 +220,7 @@ re::Vec3d re::Vec3d::operator * (const Matrix4* matrix) const
 	if (!matrix)
 		return re::Vec3d();
 
-	const float* data = (Matrix4)matrix;
+	const float* data = static_cast<const float*>(static_cast<Matrix4>(matrix));
 	return re::Vec3d(
 		(x*data[0] + y*data[4] + z*data[8] + data[12]),
 		(x*data[1] + y*data[5] + z*data[9] + data[13]),
@@ -277,15 +277,15 @@ void re::Vec3d::operator *= (float value)
 void re::Vec3d::operator *= (const Matrix4& matrix)
 {
 	double newValues[3];
-	const float* data = matrix;
+	const auto* data = static_cast<const float*>(matrix);
 
 	newValues[0] = x*data[0] + y*data[4] + z*data[8] + data[12];
 	newValues[1] = x*data[1] + y*data[5] + z*data[9] + data[13];
 	newValues[2] = x*data[2] + y*data[6] + z*data[10] + data[14];
 
-	x = (float)newValues[0];
-	y = (float)newValues[1];
-	z = (float)newValues[2];
+	x = static_cast<float>(newValues[0]);
+	y = static_cast<float>(newValues[1]);
+	z = static_cast<float>(newValues[2]);
 }
 
 
@@ -296,15 +296,15 @@ void re::Vec3d::operator *= (const Matrix4* matrix)
 		return;
 
 	double newValues[3];
-	const float* data = (Matrix4)matrix;
+	const float* data = static_cast<const float*>(static_cast<Matrix4>(matrix));
 
 	newValues[0] = x*data[0] + y*data[4] + z*data[8] + data[12];
 	newValues[1] = x*data[1] + y*data[5] + z*data[9] + data[13];
 	newValues[2] = x*data[2] + y*data[6] + z*data[10] + data[14];
 
-	x = (float)newValues[0];
-	y = (float)newValues[1];
-	z = (float)newValues[2];
+	x = static_cast<float>(newValues[0]);
+	y = static_cast<float>(newValues[1]);
+	z = static_cast<float>(newValues[2]);
 }
 
 
@@ -328,4 +328,18 @@ re::Vec3d::operator float* ()
 re::Vec3d::operator const float* () const
 {
 	return d;
+}
+
+
+
+float & re::Vec3d::operator[](size_t index)
+{
+	return d[index];
+}
+
+
+
+const float & re::Vec3d::operator[](size_t index) const
+{
+	return d[index];
 }

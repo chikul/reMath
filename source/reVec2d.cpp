@@ -258,3 +258,17 @@ re::Vec2d::operator const float* () const
 {
 	return d;
 }
+
+
+
+float & re::Vec2d::operator[](size_t index)
+{
+	return d[index];
+}
+
+
+
+const float & re::Vec2d::operator[](size_t index) const
+{
+	return d[index];
+}

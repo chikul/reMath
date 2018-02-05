@@ -48,7 +48,7 @@ namespace Test
 			Assert::IsTrue(v1 == v2, L"Vector comparison failed");
 			Assert::IsFalse(v1 == v3, L"Vector comparison failed");
 
-			// TODO: ...
+			//#pragma TODO("Finish tests!")
 
 			// Conversion operators
 			float* access1(v1);

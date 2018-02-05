@@ -5,12 +5,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+* `Matrix3` class to represent rotation-only matrix.
 * Created an MSVS solution.
 * Unit test project and `Vec2d` coverage.
+* `lookAt()` function to `reMathUtil` which calculates the view matrix.
+* Added subscript (array access) operators to all classes.
 
 ### Changed
 * Renamed `Matrix` to `Matrix4` as we now have `Matrix3` in addition.
-* Updated `Vec2d` to the latest C++ standards.
+* Updated all classes to the latest C++ standards.
+
+### Fixed
+* Matrix rotation for some reason was nullifying translation.
 
 ## [1.0.1] - 22.07.2017
 ### Fixed

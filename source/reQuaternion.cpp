@@ -95,12 +95,12 @@ void re::Quaternion::set(const Vec3d& vector)
 
 re::Quaternion re::Quaternion::fromEulers(Vec3d& vector)
 {
-	float sinYaw = sinf(vector.z / 2.f);
-	float sinPitch = sinf(vector.y / 2.f);
-	float sinRoll = sinf(vector.x / 2.f);
-	float cosYaw = cosf(vector.z / 2.f);
-	float cosPitch = cosf(vector.y / 2.f);
-	float cosRoll = cosf(vector.x / 2.f);
+	const float sinYaw = sinf(vector.z / 2.f);
+	const float sinPitch = sinf(vector.y / 2.f);
+	const float sinRoll = sinf(vector.x / 2.f);
+	const float cosYaw = cosf(vector.z / 2.f);
+	const float cosPitch = cosf(vector.y / 2.f);
+	const float cosRoll = cosf(vector.x / 2.f);
 
 	return Quaternion(
 		sinRoll * cosPitch * cosYaw - cosRoll * sinPitch * sinYaw,
@@ -114,7 +114,7 @@ re::Quaternion re::Quaternion::fromEulers(Vec3d& vector)
 
 re::Quaternion re::Quaternion::fromEulerXRotation(float angle)
 {
-	float halfAngle = angle * 0.5f;
+	const float halfAngle = angle * 0.5f;
 	return Quaternion(sinf(halfAngle), 0, 0, cosf(halfAngle));
 }
 
@@ -122,7 +122,7 @@ re::Quaternion re::Quaternion::fromEulerXRotation(float angle)
 
 re::Quaternion re::Quaternion::fromEulerYRotation(float angle)
 {
-	float halfAngle = angle * 0.5f;
+	const float halfAngle = angle * 0.5f;
 	return Quaternion(0, sinf(halfAngle), 0, cosf(halfAngle));
 }
 
@@ -130,7 +130,7 @@ re::Quaternion re::Quaternion::fromEulerYRotation(float angle)
 
 re::Quaternion re::Quaternion::fromEulerZRotation(float angle)
 {
-	float halfAngle = angle * 0.5f;
+	const float halfAngle = angle * 0.5f;
 	return Quaternion(0, 0, sinf(halfAngle), cosf(halfAngle));
 }
 
@@ -144,7 +144,7 @@ void re::Quaternion::computeW()
 	}
 	else
 	{
-		float temp = 1.0f - (x*x + y*y + z*z);
+		const float temp = 1.0f - (x*x + y*y + z*z);
 		w = temp < 0 ? 0 : -sqrtf(temp);
 	}
 }
@@ -163,11 +163,11 @@ re::Vec3d re::Quaternion::getEulers() const
 	asinf(2*(w*y - z*x)),
 	atan2f(2*(w*z + x*y), 1-2*(y*y + z*z)));*/
 
-	float m11 = w*w + x*x - y*y - z*z;
-	float m21 = 2 * (x * y + z * w);
+	const float m11 = w*w + x*x - y*y - z*z;
+	const float m21 = 2 * (x * y + z * w);
 	float m31 = 2 * (z * x - y * w);
-	float m32 = 2 * (z * y + x * w);
-	float m33 = w*w - x*x - y*y + z*z;
+	const float m32 = 2 * (z * y + x * w);
+	const float m33 = w*w - x*x - y*y + z*z;
 
 	// Range validity check
 	if (m31 < -1.f) m31 = -1.f;
@@ -189,27 +189,26 @@ re::Matrix4 re::Quaternion::getMatrix() const
 	xw = w * x2;
 
 	Matrix4 result;
-	float* data = result;
 
-	data[0] = 1.0f - (yy + zz);	// Row 1
-	data[1] = xy + zw;
-	data[2] = xz - yw;
-	data[3] = 0;
+	result[0] = 1.0f - (yy + zz);	// Row 1
+	result[1] = xy + zw;
+	result[2] = xz - yw;
+	result[3] = 0;
 
-	data[4] = xy - zw;			// Row 2
-	data[5] = 1.0f - (xx + zz);
-	data[6] = yz + xw;
-	data[7] = 0;
+	result[4] = xy - zw;			// Row 2
+	result[5] = 1.0f - (xx + zz);
+	result[6] = yz + xw;
+	result[7] = 0;
 
-	data[8] = xz + yw;			// Row 3
-	data[9] = yz - xw;
-	data[10] = 1.0f - (xx + yy);
-	data[11] = 0;
+	result[8] = xz + yw;			// Row 3
+	result[9] = yz - xw;
+	result[10] = 1.0f - (xx + yy);
+	result[11] = 0;
 
-	data[12] = 0;				// Row 4
-	data[13] = 0;
-	data[14] = 0;
-	data[15] = 1;
+	result[12] = 0;				// Row 4
+	result[13] = 0;
+	result[14] = 0;
+	result[15] = 1;
 
 	return result;
 }
@@ -225,7 +224,7 @@ float re::Quaternion::length() const
 
 void re::Quaternion::normalize()
 {
-	float d = length();
+	const float d = length();
 
 	if (d)
 	{
@@ -270,7 +269,7 @@ re::Quaternion re::Quaternion::slerp(const Quaternion& quaternion, float scale) 
 
 	if ((1.f - dot) > 0.00001f) // If dot > 0.99999 && dot < 1.00001 - do SLERP
 	{
-		float angle = acosf(dot); // Calculate the angle between the quaternions
+		const float angle = acosf(dot); // Calculate the angle between the quaternions
 		Quaternion result((first * sinf(angle * (1.f - scale)) + second * sinf(angle * scale)) / sinf(angle));
 		result.normalize();
 		return result;
@@ -285,7 +284,7 @@ re::Quaternion re::Quaternion::slerp(const Quaternion& quaternion, float scale) 
 
 re::Quaternion re::Quaternion::lerp(const Quaternion& quaternion, float scale) const
 {
-	Quaternion result(Quaternion(this) + ((quaternion - this) * scale));
+	Quaternion result(Quaternion(this) + ((quaternion - Quaternion(this)) * scale));
 	result.normalize();
 	return result;
 }
@@ -348,10 +347,10 @@ re::Quaternion re::Quaternion::operator - (const Quaternion& quaternion) const
 
 re::Quaternion re::Quaternion::operator * (const Quaternion& quaternion) const
 {
-	float xComponent = w * quaternion.x + quaternion.w * x + (y * quaternion.z - z * quaternion.y);
-	float yComponent = w * quaternion.y + quaternion.w * y + (z * quaternion.x - x * quaternion.z);
-	float zComponent = w * quaternion.z + quaternion.w * z + (x * quaternion.y - y * quaternion.x);
-	float wComponent = w * quaternion.w - (x * quaternion.x + y * quaternion.y + z * quaternion.z);
+	const float xComponent = w * quaternion.x + quaternion.w * x + (y * quaternion.z - z * quaternion.y);
+	const float yComponent = w * quaternion.y + quaternion.w * y + (z * quaternion.x - x * quaternion.z);
+	const float zComponent = w * quaternion.z + quaternion.w * z + (x * quaternion.y - y * quaternion.x);
+	const float wComponent = w * quaternion.w - (x * quaternion.x + y * quaternion.y + z * quaternion.z);
 	return Quaternion(xComponent, yComponent, zComponent, wComponent);
 }
 
@@ -404,10 +403,10 @@ re::Quaternion& re::Quaternion::operator -= (const Quaternion& quaternion)
 
 re::Quaternion& re::Quaternion::operator *= (const Quaternion& quaternion)
 {
-	float xComponent = w * quaternion.x + quaternion.w * x + (y * quaternion.z - z * quaternion.y);
-	float yComponent = w * quaternion.y + quaternion.w * y + (z * quaternion.x - x * quaternion.z);
-	float zComponent = w * quaternion.z + quaternion.w * z + (x * quaternion.y - y * quaternion.x);
-	float wComponent = w * quaternion.w - (x * quaternion.x + y * quaternion.y + z * quaternion.z);
+	const float xComponent = w * quaternion.x + quaternion.w * x + (y * quaternion.z - z * quaternion.y);
+	const float yComponent = w * quaternion.y + quaternion.w * y + (z * quaternion.x - x * quaternion.z);
+	const float zComponent = w * quaternion.z + quaternion.w * z + (x * quaternion.y - y * quaternion.x);
+	const float wComponent = w * quaternion.w - (x * quaternion.x + y * quaternion.y + z * quaternion.z);
 	set(xComponent, yComponent, zComponent, wComponent);
 
 	return *this;
@@ -415,24 +414,24 @@ re::Quaternion& re::Quaternion::operator *= (const Quaternion& quaternion)
 
 
 
-re::Quaternion& re::Quaternion::operator *= (float f)
+re::Quaternion& re::Quaternion::operator *= (float value)
 {
-	x *= f;
-	y *= f;
-	z *= f;
-	w *= f;
+	x *= value;
+	y *= value;
+	z *= value;
+	w *= value;
 
 	return *this;
 }
 
 
 
-re::Quaternion& re::Quaternion::operator /= (float f)
+re::Quaternion& re::Quaternion::operator /= (float value)
 {
-	x /= f;
-	y /= f;
-	z /= f;
-	w /= f;
+	x /= value;
+	y /= value;
+	z /= value;
+	w /= value;
 
 	return *this;
 }
@@ -449,4 +448,18 @@ re::Quaternion::operator float* ()
 re::Quaternion::operator const float* () const
 {
 	return d;
+}
+
+
+
+float & re::Quaternion::operator[](size_t index)
+{
+	return d[index];
+}
+
+
+
+const float & re::Quaternion::operator[](size_t index) const
+{
+	return d[index];
 }

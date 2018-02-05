@@ -10,7 +10,6 @@
 
 #include "reMathUtil.h"
 #include "reMath.h"
-#include <string.h>
 #include <math.h>
 
 float re::toRadians(float degrees)
@@ -59,16 +58,54 @@ unsigned char re::getLowNibble(unsigned char byte)
 
 re::Matrix4 re::perspective(float fovy, float aspect, float zNear, float zFar)
 {
-	float matrix[16];
-	memset(matrix, 0, sizeof(matrix));
+	const float tanHalfFovy = 1.f / tanf(toRadians(fovy) / 2.f);
 
-	float cotngentHalfFovy = float(1.f / (tan(toRadians(fovy) / 2.f)));
-
-	matrix[0] = cotngentHalfFovy / aspect;
-	matrix[5] = cotngentHalfFovy;
+	Matrix4 matrix;
+	matrix[0] = tanHalfFovy / aspect;
+	matrix[5] = tanHalfFovy;
 	matrix[10] = (zFar + zNear) / (zNear - zFar);
 	matrix[11] = -1.f;
 	matrix[14] = (2.f * zFar * zNear) / (zNear - zFar);
+	return matrix;
+}
 
-	return Matrix4(matrix);
+re::Matrix4 re::lookAt(const Vec3d& eye, const Vec3d& center, const Vec3d& up)
+{
+	// Calculate forward vector
+	Vec3d forward(center - eye);
+	forward.normalize();
+
+	// Normalize up vector
+	Vec3d upVector(up);
+	upVector.normalize();
+
+	// Get the perpendicular "side" vector
+	Vec3d side(forward.cross(up));
+	side.normalize();
+
+	// Recompute up as "side x forward"
+	upVector = side.cross(forward);
+
+	Matrix4 matrix2, result;
+	
+	// Column #1
+	matrix2[0] = side.x;
+	matrix2[4] = side.y;
+	matrix2[8] = side.z;
+
+	// Column #2
+	matrix2[1] = upVector.x;
+	matrix2[5] = upVector.y;
+	matrix2[9] = upVector.z;
+
+	// Column #3
+	matrix2[2] = -forward.x;
+	matrix2[6] = -forward.y;
+	matrix2[10] = -forward.z;
+
+	// Set eye translation
+	result *= matrix2;
+	result.setTranslation(-eye);
+	
+	return result;
 }

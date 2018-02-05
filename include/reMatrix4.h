@@ -15,6 +15,7 @@ namespace re
 {
 	class Vec3d;
 	class Matrix3;
+	class Quaternion;
 
 	// Matrix4 Class.
 	class Matrix4
@@ -143,6 +144,8 @@ namespace re
 
 		// Returns result of matrices multiplication.
 		Matrix4 operator * (const Matrix4& matrix) const;
+
+		Quaternion operator * (const Quaternion& q) const;
 
 
 		// Compound assignment operators.

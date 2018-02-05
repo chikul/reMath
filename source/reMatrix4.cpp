@@ -11,6 +11,7 @@
 #include "reMatrix4.h"
 #include "reVec3d.h"
 #include "reMatrix3.h"
+#include "reQuaternion.h"
 #include "reMathUtil.h"
 #include <string.h>
 #include <math.h>
@@ -512,6 +513,16 @@ re::Matrix4 re::Matrix4::operator * (const Matrix4& matrix) const
 {
 	Matrix4 result(this);
 	result *= matrix;
+	return result;
+}
+
+re::Quaternion re::Matrix4::operator * (const Quaternion & q) const
+{
+	Quaternion result;
+	result.x = data_[0] * q.x + data_[4] * q.y + data_[8]  * q.z + data_[12] * q.w;
+	result.y = data_[1] * q.x + data_[5] * q.y + data_[9]  * q.z + data_[13] * q.w;
+	result.z = data_[2] * q.x + data_[6] * q.y + data_[10] * q.z + data_[14] * q.w;
+	result.w = data_[3] * q.x + data_[7] * q.y + data_[11] * q.z + data_[15] * q.w;
 	return result;
 }
 

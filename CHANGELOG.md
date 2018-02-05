@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Unit test project and `Vec2d` coverage.
 * `lookAt()` function to `reMathUtil` which calculates the view matrix.
 * Added subscript (array access) operators to all classes.
+* Added quaternion by matrix multiplication.
 
 ### Changed
 * Renamed `Matrix` to `Matrix4` as we now have `Matrix3` in addition.

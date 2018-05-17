@@ -46,6 +46,8 @@ namespace re
 
 	// Returns a view matrix composed of eye coordinates, view center, and the up-vector.
 	Matrix4 lookAt(const Vec3d& eye, const Vec3d& center, const Vec3d& up);
+
+	float triangleArea(const Vec3d& a, const Vec3d& b, const Vec3d& c);
 }
 
 #endif // __RE_MATH_UTIL__

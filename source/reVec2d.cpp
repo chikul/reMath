@@ -9,8 +9,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 #include "reVec2d.h"
-#include <string.h>
-#include <math.h>
+#include <cstring>
+#include <cmath>
 
 re::Vec2d::Vec2d()
 {
@@ -87,7 +87,16 @@ void re::Vec2d::set(const float* vector)
 
 float re::Vec2d::length() const
 {
-	return sqrtf(x * x + y * y);
+	return sqrt(x * x + y * y);
+}
+
+
+
+float re::Vec2d::distanceTo(const Vec2d & vector) const
+{
+	const float dx = x - vector.x;
+	const float dy = y - vector.y;
+	return sqrt(dx * dx + dy * dy);
 }
 
 

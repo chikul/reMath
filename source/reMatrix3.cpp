@@ -11,8 +11,8 @@
 #include "reMatrix3.h"
 #include "reVec3d.h"
 #include "reMatrix4.h"
-#include <string.h>
-#include <math.h>
+#include <cstring>
+#include <cmath>
 #include "reMathUtil.h"
 
 re::Matrix3::Matrix3()
@@ -73,12 +73,12 @@ void re::Matrix3::set(const float * matrix)
 
 void re::Matrix3::setRotation(float x, float y, float z)
 {
-	const float cx = cosf(x);				//	| 0  1  2 |		|0-0  0-1  0-2|
-	const float sx = sinf(x);				//	| 3  4  5 |		|1-0  1-1  1-2|
-	const float cy = cosf(y);				//	| 6  7  8 |		|2-0  2-1  2-2|
-	const float sy = sinf(y);
-	const float cz = cosf(z);
-	const float sz = sinf(z);
+	const float cx = cos(x);				//	| 0  1  2 |		|0-0  0-1  0-2|
+	const float sx = sin(x);				//	| 3  4  5 |		|1-0  1-1  1-2|
+	const float cy = cos(y);				//	| 6  7  8 |		|2-0  2-1  2-2|
+	const float sy = sin(y);
+	const float cz = cos(z);
+	const float sz = sin(z);
 	const float sxsy = sx * sy;
 	const float cxsy = cx * sy;
 
@@ -111,21 +111,21 @@ re::Vec3d re::Matrix3::getEulers() const
 
 	if (data_[1] > 0.9998) // singularity at north pole
 	{
-		result.y = atan2f(data_[6], data_[8]);
+		result.y = atan2(data_[6], data_[8]);
 		result.z = PI / 2;
 		result.x = 0;
 	}
 	else if (data_[1] < -0.9998) // singularity at south pole
 	{
-		result.y = atan2f(data_[6], data_[8]);
+		result.y = atan2(data_[6], data_[8]);
 		result.z = -PI / 2;
 		result.x = 0;
 	}
 	else
 	{
-		result.y = atan2f(-data_[2], data_[0]);
-		result.x = atan2f(-data_[7], data_[4]);
-		result.z = asinf(data_[1]);
+		result.y = atan2(-data_[2], data_[0]);
+		result.x = atan2(-data_[7], data_[4]);
+		result.z = asin(data_[1]);
 	}
 
 	return result;

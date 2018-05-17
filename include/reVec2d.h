@@ -39,6 +39,9 @@ namespace re
 		// Get vector magnitutde.
 		float length() const;
 
+		// Calculate absolute distance to another vector.
+		float distanceTo(const Vec2d& vector) const;
+
 		// Parallel vectors check.
 		bool isParallel(const Vec2d& vector) const;
 

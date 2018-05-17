@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+* `distanceTo()` method to `Vec2d` and `Vec3d`, which calculates absolute distance to another 
+vector.
+* `triangleArea()` function to utilities.
+
+# Changed
+* `math.h` and `string.h` includes replaced by `cmath` and `cstring` as former are deprecated by 
+the standard.
+
 ## [1.1.0] 05.02.2018
 ### Added
 * `Matrix3` class to represent rotation-only matrix.

@@ -23,7 +23,7 @@
     <ProjectGuid>{9FBA419A-28BA-4595-A924-9FABC291486E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>reMath</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,22 +71,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
+    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
+    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
+    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
+    <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>

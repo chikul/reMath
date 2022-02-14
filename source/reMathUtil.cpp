@@ -21,23 +21,24 @@ float re::toRadians(float degrees)
 
 float re::toDegrees(float radians)
 {
-	return radians / PI / 180.f;
+	return radians * 180.f / PI;
 }
 
 
 
 unsigned long re::maxPowerOfTwo(unsigned long value)
 {
-	unsigned long power = 1;
-	unsigned long result = 0;
+	if (!value)
+		return 0;
 
-	while (power < value)
+	unsigned long result = 0;
+	while (value)
 	{
-		power <<= 1;
+		value = value >> 1;
 		result++;
 	}
 
-	return result;
+	return --result;
 }
 
 

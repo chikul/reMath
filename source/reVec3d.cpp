@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reVec3d.cpp
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Implementation of Vec3d class (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
@@ -10,8 +10,8 @@
 
 #include "reVec3d.h"
 #include "reMatrix4.h"
-#include <string.h>
-#include <math.h>
+#include <cstring>
+#include <cmath>
 
 re::Vec3d::Vec3d()
 {
@@ -89,7 +89,15 @@ void re::Vec3d::set(const float* vector)
 
 float re::Vec3d::length() const
 {
-	return sqrtf(x * x + y * y + z * z);
+	return sqrt(x * x + y * y + z * z);
+}
+
+float re::Vec3d::distanceTo(const Vec3d & vector) const
+{
+	const float dx = x - vector.x;
+	const float dy = y - vector.y;
+	const float dz = z - vector.z;
+	return sqrt(dx * dx + dy * dy + dz * dz);
 }
 
 
@@ -104,7 +112,7 @@ bool re::Vec3d::isParallel(const Vec3d& vector) const
 
 void re::Vec3d::normalize()
 {
-	float d = length();
+	const float d = length();
 
 	if (d)
 	{

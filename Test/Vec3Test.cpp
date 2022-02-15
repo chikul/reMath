@@ -3,6 +3,7 @@
 #include "reVec3d.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace re;
 
 namespace Test
 {
@@ -26,7 +27,7 @@ namespace Test
 
 		TEST_METHOD(BasicVec3Test)
 		{
-			re::Vec3d v1(2.f, 3.f, 4.f);
+			Vec3d v1(2.f, 3.f, 4.f);
 			Assert::AreEqual(5.3851648071345040312507104915403f, v1.length(), L"Vector magnitutde incorrect"/*, LINE_INFO()*/);
 
 			//const re::Vec3d v2(3.f, 4.5f);

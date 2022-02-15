@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reMatrix4.cpp
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Implementation of Matrix4 class (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
@@ -13,8 +13,8 @@
 #include "reMatrix3.h"
 #include "reQuaternion.h"
 #include "reMathUtil.h"
-#include <string.h>
-#include <math.h>
+#include <cstring>
+#include <cmath>
 
 re::Matrix4::Matrix4()
 {
@@ -87,12 +87,12 @@ void re::Matrix4::set(const float* matrix)
 
 void re::Matrix4::setRotation(float x, float y, float z)
 {
-	const float cx = cosf(x);						//	| 0  1  2  3|		|0-0  0-1  0-2  0-3|
-	const float sx = sinf(x);						//	| 4  5  6  7|		|1-0  1-1  1-2  1-3|
-	const float cy = cosf(y);						//	| 8  9 10 11|		|2-0  2-1  2-2  2-3|
-	const float sy = sinf(y);						//	|12 13 14 15|		|3-0  3-1  3-2  3-3|
-	const float cz = cosf(z);
-	const float sz = sinf(z);						//	| 0  4  8 12|
+	const float cx = cos(x);						//	| 0  1  2  3|		|0-0  0-1  0-2  0-3|
+	const float sx = sin(x);						//	| 4  5  6  7|		|1-0  1-1  1-2  1-3|
+	const float cy = cos(y);						//	| 8  9 10 11|		|2-0  2-1  2-2  2-3|
+	const float sy = sin(y);						//	|12 13 14 15|		|3-0  3-1  3-2  3-3|
+	const float cz = cos(z);
+	const float sz = sin(z);						//	| 0  4  8 12|
 	const float sxsy = sx * sy;						//	| 1	 5  9 13|
 	const float cxsy = cx * sy;						//	| 2  6 10 14|
 													//	| 3  7 11 15|
@@ -196,21 +196,21 @@ re::Vec3d re::Matrix4::getEulers() const
 
 	if (data_[1] > 0.9998) // singularity at north pole
 	{
-		result.y = atan2f(data_[8], data_[10]);
+		result.y = atan2(data_[8], data_[10]);
 		result.z = PI / 2;
 		result.x = 0;
 	}
 	else if (data_[1] < -0.9998) // singularity at south pole
 	{
-		result.y = atan2f(data_[8], data_[10]);
+		result.y = atan2(data_[8], data_[10]);
 		result.z = -PI / 2;
 		result.x = 0;
 	}
 	else
 	{
-		result.y = atan2f(-data_[2], data_[0]);
-		result.x = atan2f(-data_[9], data_[5]);
-		result.z = asinf(data_[1]);
+		result.y = atan2(-data_[2], data_[0]);
+		result.x = atan2(-data_[9], data_[5]);
+		result.z = asin(data_[1]);
 	}
 
 	return result;

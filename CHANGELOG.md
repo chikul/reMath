@@ -3,25 +3,27 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.2.0] - 15.02.2022
 
 ### Added
 
 * Added `distanceTo()` method to `Vec2d` and `Vec3d`, which calculates absolute distance to another vector.
 * Added `triangleArea()` function to utilities.
 * `Vec2d` unit test coverage finished completely.
+* Added utils test suite.
 * Started on the docstrings in Doxygen-style.
 
 ### Changed
 
 * `math.h` and `string.h` includes replaced by `cmath` and `cstring` as former are deprecated by the standard.
+* Upgraded Win platform version.
 
 ### Fixed
 
 * `toDegrees` was returning incorrect result.
 * `maxPowerOfTwo` was returning incorrect result.
 
-## [1.1.0] 05.02.2018
+## [1.1.0] - 05.02.2018
 
 ### Added
 

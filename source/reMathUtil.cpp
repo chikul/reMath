@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reMathUtil.cpp
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Implementation of Razor Edge math utility functions (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
@@ -10,7 +10,7 @@
 
 #include "reMathUtil.h"
 #include "reMath.h"
-#include <math.h>
+#include <cmath>
 
 float re::toRadians(float degrees)
 {
@@ -21,23 +21,24 @@ float re::toRadians(float degrees)
 
 float re::toDegrees(float radians)
 {
-	return radians / PI / 180.f;
+	return radians * 180.f / PI;
 }
 
 
 
 unsigned long re::maxPowerOfTwo(unsigned long value)
 {
-	unsigned long power = 1;
-	unsigned long result = 0;
+	if (!value)
+		return 0;
 
-	while (power < value)
+	unsigned long result = 0;
+	while (value)
 	{
-		power <<= 1;
+		value = value >> 1;
 		result++;
 	}
 
-	return result;
+	return --result;
 }
 
 
@@ -108,4 +109,13 @@ re::Matrix4 re::lookAt(const Vec3d& eye, const Vec3d& center, const Vec3d& up)
 	result.setTranslation(-eye);
 	
 	return result;
+}
+
+float re::triangleArea(const Vec3d & a, const Vec3d & b, const Vec3d & c)
+{
+	const float d1 = a.distanceTo(b);
+	const float d2 = a.distanceTo(c);
+	const float d3 = b.distanceTo(c);
+	const float halfPerimeter = (d1 + d2 + d3) / 2;
+	return sqrt(halfPerimeter * (halfPerimeter - d1) * (halfPerimeter - d2) * (halfPerimeter - d3));
 }

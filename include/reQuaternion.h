@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reQuaternion.h
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Definition of Quaternion class (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul

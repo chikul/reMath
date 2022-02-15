@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reMathUtil.cpp
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Implementation of Razor Edge math utility functions (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul

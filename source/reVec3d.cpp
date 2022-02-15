@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reVec3d.cpp
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Implementation of Vec3d class (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul

@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reVec2d.h
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Definition of Vec2d class (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul

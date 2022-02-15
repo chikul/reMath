@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // File:        reQuaternion.cpp
-// Project:     Razor Edge Classes
+// Project:     reMath
 // Description: Implementation of Quaternion class (Math Module)
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
@@ -11,8 +11,8 @@
 #include "reQuaternion.h"
 #include "reVec3d.h"
 #include "reMatrix4.h"
-#include <string.h>
-#include <math.h>
+#include <cstring>
+#include <cmath>
 
 re::Quaternion::Quaternion()
 {

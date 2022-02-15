@@ -12,7 +12,7 @@ namespace Test
 	public:
 		TEST_METHOD(BasicUtilsUnitTest)
 		{
-			// Radiand/degrees conversion.
+			// Radians/degrees conversion.
 			Assert::AreEqual(PI, toRadians(180), L"To radians conversion failed.");
 			Assert::AreEqual(180.f, toDegrees(PI), L"To degrees conversion failed.");
 

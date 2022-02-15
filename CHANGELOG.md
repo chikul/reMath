@@ -7,15 +7,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Added `distanceTo()` method to `Vec2d` and `Vec3d`, which calculates absolute distance to another 
-vector.
+* Added `distanceTo()` method to `Vec2d` and `Vec3d`, which calculates absolute distance to another vector.
 * Added `triangleArea()` function to utilities.
 * `Vec2d` unit test coverage finished completely.
+* Started on the docstrings in Doxygen-style.
 
 ### Changed
 
-* `math.h` and `string.h` includes replaced by `cmath` and `cstring` as former are deprecated by 
-the standard.
+* `math.h` and `string.h` includes replaced by `cmath` and `cstring` as former are deprecated by the standard.
 
 ### Fixed
 
@@ -56,4 +55,4 @@ the standard.
 
 ### Changed
 
-* Introduced re namespace.
+* Introduced `re` namespace.

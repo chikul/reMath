@@ -24,6 +24,16 @@ namespace Test
 			Assert::AreEqual(static_cast<unsigned long>(1), maxPowerOfTwo(2), L"Max power of 2 failed.");
 			Assert::AreEqual(static_cast<unsigned long>(0), maxPowerOfTwo(1), L"Max power of 2 failed.");
 			Assert::AreEqual(static_cast<unsigned long>(0), maxPowerOfTwo(0), L"Max power of 2 failed.");
+
+			// Get high nibble.
+			Assert::AreEqual(static_cast <unsigned char>(0), getHighNibble(1), L"Get high nibble failed.");
+			Assert::AreEqual(static_cast <unsigned char>(32), getHighNibble(42), L"Get high nibble failed.");
+			Assert::AreEqual(static_cast <unsigned char>(112), getHighNibble(127), L"Get high nibble failed.");
+
+			// Get low nibble.
+			Assert::AreEqual(static_cast <unsigned char>(1), getLowNibble(1), L"Get low nibble failed.");
+			Assert::AreEqual(static_cast <unsigned char>(10), getLowNibble(42), L"Get low nibble failed.");
+			Assert::AreEqual(static_cast <unsigned char>(15), getLowNibble(127), L"Get low nibble failed.");
 		}
 	};
 }

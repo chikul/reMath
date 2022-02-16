@@ -59,7 +59,7 @@ unsigned char re::getLowNibble(unsigned char byte)
 
 re::Matrix4 re::perspective(float fovy, float aspect, float zNear, float zFar)
 {
-	const float tanHalfFovy = 1.f / tanf(toRadians(fovy) / 2.f);
+	const float tanHalfFovy = 1.f / tan(toRadians(fovy) / 2.f);
 
 	Matrix4 matrix;
 	matrix[0] = tanHalfFovy / aspect;

@@ -1,19 +1,19 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "reVec3d.h"
+#include "reMatrix4.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace re;
 
 namespace Test
 {
-	TEST_CLASS(Vec3UnitTest)
+	TEST_CLASS(Matrix4UnitTest)
 	{
 	public:
-		TEST_METHOD(BasicVec3Test)
+		TEST_METHOD(BasicMatrix4Test)
 		{
-			Vec3d v1(2.f, 3.f, 4.f);
-			Assert::AreEqual(5.3851648071345040312507104915403f, v1.length(), L"Vector magnitutde incorrect"/*, LINE_INFO()*/);
+			//Vec3d v1(2.f, 3.f, 4.f);
+			//Assert::AreEqual(5.3851648071345040312507104915403f, v1.length(), L"Vector magnitutde incorrect"/*, LINE_INFO()*/);
 
 			//const re::Vec3d v2(3.f, 4.5f);
 			//Assert::IsTrue(v1.isParallel(v2), L"Vector parallel check failed"/*, LINE_INFO()*/);
@@ -21,7 +21,7 @@ namespace Test
 			// TODO: ...
 		}
 
-		TEST_METHOD(OperatorsVec3Test)
+		TEST_METHOD(OperatorsMatrix4Test)
 		{
 			/*re::Vec2d v1(2.f, 3.f);
 			float* access1(v1);

@@ -2,7 +2,7 @@
 //
 // File:        reVec3d.cpp
 // Project:     reMath
-// Description: Implementation of Vec3d class (Math Module)
+// Description: Implementation of Vec3d class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //

@@ -2,7 +2,7 @@
 //
 // File:        reMathUtil.h
 // Project:     reMath
-// Description: Definition of Razor Edge math utility functions (Math Module)
+// Description: Definition of Razor Edge math utility functions
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //
@@ -13,7 +13,9 @@
 
 namespace re
 {
-	// PI Value.
+	/**
+	 * @brief PI Value.
+	 */
 	const float PI = 3.14159265358979f;
 	const float PI2 = 6.28318530717959f;
 

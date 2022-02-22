@@ -2,7 +2,7 @@
 //
 // File:        reMatrix3.h
 // Project:     reMath
-// Description: Definition of Matrix3 class (Math Module)
+// Description: Definition of Matrix3 class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //

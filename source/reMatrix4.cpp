@@ -2,7 +2,7 @@
 //
 // File:        reMatrix4.cpp
 // Project:     reMath
-// Description: Implementation of Matrix4 class (Math Module)
+// Description: Implementation of Matrix4 class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //

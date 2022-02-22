@@ -2,7 +2,7 @@
 //
 // File:        reVec2d.h
 // Project:     reMath
-// Description: Definition of Vec2d class (Math Module)
+// Description: Definition of Vec2d class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //

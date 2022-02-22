@@ -2,7 +2,7 @@
 //
 // File:        reQuaternion.cpp
 // Project:     reMath
-// Description: Implementation of Quaternion class (Math Module)
+// Description: Implementation of Quaternion class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //

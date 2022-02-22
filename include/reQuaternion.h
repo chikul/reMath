@@ -2,7 +2,7 @@
 //
 // File:        reQuaternion.h
 // Project:     reMath
-// Description: Definition of Quaternion class (Math Module)
+// Description: Definition of Quaternion class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //

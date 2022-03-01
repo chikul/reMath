@@ -8,9 +8,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "reQuaternion.h"
-#include "reVec3d.h"
-#include "reMatrix4.h"
+#include "reMath/reQuaternion.h"
+#include "reMath/reVec3d.h"
+#include "reMath/reMatrix4.h"
 #include <cstring>
 #include <cmath>
 

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "reMatrix4.h"
+#include "reMath/reMatrix4.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace re;

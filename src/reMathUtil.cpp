@@ -8,8 +8,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "reMathUtil.h"
-#include "reMath.h"
+#include "reMath/reMathUtil.h"
+#include "reMath/reMath.h"
 #include <cmath>
 
 float re::toRadians(float degrees)

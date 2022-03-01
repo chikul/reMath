@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "reQuaternion.h"
+#include "reMath/reQuaternion.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace re;

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "reVec3d.h"
+#include "reMath/reVec3d.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace re;

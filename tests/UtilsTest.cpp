@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "reMathUtil.h"
+#include "reMatrix4.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace re;
@@ -34,6 +35,9 @@ namespace Test
 			Assert::AreEqual(static_cast <unsigned char>(1), getLowNibble(1), L"Get low nibble failed.");
 			Assert::AreEqual(static_cast <unsigned char>(10), getLowNibble(42), L"Get low nibble failed.");
 			Assert::AreEqual(static_cast <unsigned char>(15), getLowNibble(127), L"Get low nibble failed.");
+
+			// Perspective matrix.
+			auto matrix = perspective(45.f, 640.f / 480.f);
 		}
 	};
 }

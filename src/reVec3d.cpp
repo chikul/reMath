@@ -104,6 +104,7 @@ float re::Vec3d::distanceTo(const Vec3d & vector) const
 
 bool re::Vec3d::isParallel(const Vec3d& vector) const
 {
+	// TODO: Not safe, potential division by zero.
 	return (((x / vector.x) == (y / vector.y)) && 
 		((x / vector.x) == (z / vector.z)));
 }

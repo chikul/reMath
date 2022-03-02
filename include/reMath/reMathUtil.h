@@ -48,7 +48,7 @@ namespace re
 	unsigned long maxPowerOfTwo(unsigned long value);
 
 	/*
-	 * @brief Get higher half of the byte
+	 * @brief Get higher half of the byte.
 	 * 
 	 * @param byte A byte to extract the high nibble from
 	 * @return High nibble of a byte
@@ -56,7 +56,7 @@ namespace re
 	unsigned char getHighNibble(unsigned char byte);
 
     /**
-	 * @brief Get lower half of the byte
+	 * @brief Get lower half of the byte.
 	 * 
 	 * @param byte A byte to extract the low nibble from
 	 * @return Low nibble of a byte
@@ -85,7 +85,7 @@ namespace re
 	Matrix4 lookAt(const Vec3d& eye, const Vec3d& center, const Vec3d& up);
 
     /**
-	 * @brief Calculates the area of a triangle defined by three vertices.
+	 * @brief Calculates the area of a triangle defined by three vertices in 3D space.
 	 *
 	 * @param a First vertex
 	 * @param b Second vertex

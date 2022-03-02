@@ -37,7 +37,7 @@ namespace Test
 			Assert::AreEqual(static_cast <unsigned char>(15), getLowNibble(127), L"Get low nibble failed.");
 
 			// Perspective matrix.
-			auto matrix = perspective(45.f, 640.f / 480.f);
+			//auto matrix = perspective(45.f, 640.f / 480.f);
 		}
 	};
 }

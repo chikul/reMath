@@ -2,15 +2,15 @@
 //
 // File:        reQuaternion.cpp
 // Project:     reMath
-// Description: Implementation of Quaternion class (Math Module)
+// Description: Implementation of Quaternion class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "reQuaternion.h"
-#include "reVec3d.h"
-#include "reMatrix4.h"
+#include "reMath/reQuaternion.h"
+#include "reMath/reVec3d.h"
+#include "reMath/reMatrix4.h"
 #include <cstring>
 #include <cmath>
 

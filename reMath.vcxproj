@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <OutDir>$(SolutionDir)bin\</OutDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <OutDir>$(SolutionDir)bin\</OutDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <OutDir>$(SolutionDir)bin\</OutDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(SolutionDir)build\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <OutDir>$(SolutionDir)bin\</OutDir>
+    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IncludePath>include\;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,25 +147,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\reMath.h" />
-    <ClInclude Include="include\reMathUtil.h" />
-    <ClInclude Include="include\reMatrix4.h" />
-    <ClInclude Include="include\reMatrix3.h" />
-    <ClInclude Include="include\reQuaternion.h" />
-    <ClInclude Include="include\reVec2d.h" />
-    <ClInclude Include="include\reVec3d.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="source\reMathUtil.cpp" />
-    <ClCompile Include="source\reMatrix4.cpp" />
-    <ClCompile Include="source\reMatrix3.cpp" />
-    <ClCompile Include="source\reQuaternion.cpp" />
-    <ClCompile Include="source\reVec2d.cpp" />
-    <ClCompile Include="source\reVec3d.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="CHANGELOG.md" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\reMathUtil.cpp" />
+    <ClCompile Include="src\reMatrix3.cpp" />
+    <ClCompile Include="src\reMatrix4.cpp" />
+    <ClCompile Include="src\reQuaternion.cpp" />
+    <ClCompile Include="src\reVec2d.cpp" />
+    <ClCompile Include="src\reVec3d.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\reMath\reMath.h" />
+    <ClInclude Include="include\reMath\reMathUtil.h" />
+    <ClInclude Include="include\reMath\reMatrix3.h" />
+    <ClInclude Include="include\reMath\reMatrix4.h" />
+    <ClInclude Include="include\reMath\reQuaternion.h" />
+    <ClInclude Include="include\reMath\reVec2d.h" />
+    <ClInclude Include="include\reMath\reVec3d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,18 +2,18 @@
 //
 // File:        reMatrix4.cpp
 // Project:     reMath
-// Description: Implementation of Matrix3 class (Math Module)
+// Description: Implementation of Matrix3 class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "reMatrix3.h"
-#include "reVec3d.h"
-#include "reMatrix4.h"
+#include "reMath/reMatrix3.h"
+#include "reMath/reVec3d.h"
+#include "reMath/reMatrix4.h"
 #include <cstring>
 #include <cmath>
-#include "reMathUtil.h"
+#include "reMath/reMathUtil.h"
 
 re::Matrix3::Matrix3()
 {

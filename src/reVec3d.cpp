@@ -2,14 +2,14 @@
 //
 // File:        reVec3d.cpp
 // Project:     reMath
-// Description: Implementation of Vec3d class (Math Module)
+// Description: Implementation of Vec3d class
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "reVec3d.h"
-#include "reMatrix4.h"
+#include "reMath/reVec3d.h"
+#include "reMath/reMatrix4.h"
 #include <cstring>
 #include <cmath>
 
@@ -104,6 +104,7 @@ float re::Vec3d::distanceTo(const Vec3d & vector) const
 
 bool re::Vec3d::isParallel(const Vec3d& vector) const
 {
+	// TODO: Not safe, potential division by zero.
 	return (((x / vector.x) == (y / vector.y)) && 
 		((x / vector.x) == (z / vector.z)));
 }

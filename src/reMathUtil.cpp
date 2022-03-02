@@ -2,14 +2,14 @@
 //
 // File:        reMathUtil.cpp
 // Project:     reMath
-// Description: Implementation of Razor Edge math utility functions (Math Module)
+// Description: Implementation of Razor Edge math utility functions
 // Copyright:   Copyright © 2004++ REGLabs
 // Author:      Pavel Chikul
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "reMathUtil.h"
-#include "reMath.h"
+#include "reMath/reMathUtil.h"
+#include "reMath/reMath.h"
 #include <cmath>
 
 float re::toRadians(float degrees)
@@ -59,7 +59,7 @@ unsigned char re::getLowNibble(unsigned char byte)
 
 re::Matrix4 re::perspective(float fovy, float aspect, float zNear, float zFar)
 {
-	const float tanHalfFovy = 1.f / tanf(toRadians(fovy) / 2.f);
+	const float tanHalfFovy = 1.f / tan(toRadians(fovy) / 2.f);
 
 	Matrix4 matrix;
 	matrix[0] = tanHalfFovy / aspect;

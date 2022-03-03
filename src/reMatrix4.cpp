@@ -22,7 +22,6 @@ re::Matrix4::Matrix4()
 }
 
 
-
 re::Matrix4::Matrix4(const Matrix4& matrix)
 {
 	if (&matrix == this)
@@ -32,7 +31,6 @@ re::Matrix4::Matrix4(const Matrix4& matrix)
 }
 
 
-
 re::Matrix4::Matrix4(const Matrix4* matrix)
 {
 	if (matrix == this || !matrix)
@@ -40,7 +38,6 @@ re::Matrix4::Matrix4(const Matrix4* matrix)
 
 	memcpy(data_, matrix->data_, sizeof(float) * 16);
 }
-
 
 
 re::Matrix4::Matrix4(const float* matrix)
@@ -54,6 +51,7 @@ re::Matrix4::Matrix4(const float* matrix)
 	memcpy(data_, matrix, sizeof(float) * 16);
 }
 
+
 re::Matrix4::Matrix4(const Matrix3 & matrix)
 {
 	loadIdentity();
@@ -63,13 +61,11 @@ re::Matrix4::Matrix4(const Matrix3 & matrix)
 }
 
 
-
 void re::Matrix4::loadIdentity()
 {
 	memset(data_, 0, sizeof(float) * 16);
 	data_[0] = data_[5] = data_[10] = data_[15] = 1;
 }
-
 
 
 void re::Matrix4::set(const float* matrix)
@@ -82,7 +78,6 @@ void re::Matrix4::set(const float* matrix)
 
 	memcpy(data_, matrix, sizeof(float) * 16);
 }
-
 
 
 void re::Matrix4::setRotation(float x, float y, float z)
@@ -110,19 +105,16 @@ void re::Matrix4::setRotation(float x, float y, float z)
 }
 
 
-
 void re::Matrix4::setRotation(const float* r)
 {
 	setRotation(r[0], r[1], r[2]);
 }
 
 
-
 void re::Matrix4::setRotation(const Vec3d& r)
 {
 	setRotation(r.x, r.y, r.z);
 }
-
 
 
 void re::Matrix4::setTranslation(float x, float y, float z)
@@ -133,12 +125,10 @@ void re::Matrix4::setTranslation(float x, float y, float z)
 }
 
 
-
 void re::Matrix4::setTranslation(const float* t)
 {
 	memcpy(&data_[12], t, sizeof(float) * 3);
 }
-
 
 
 void re::Matrix4::setTranslation(const re::Vec3d& t)
@@ -147,12 +137,10 @@ void re::Matrix4::setTranslation(const re::Vec3d& t)
 }
 
 
-
 re::Vec3d re::Matrix4::getTranslation() const
 {
 	return Vec3d(data_[12], data_[13], data_[14]);
 }
-
 
 
 void re::Matrix4::setScale(float x, float y, float z)
@@ -163,14 +151,12 @@ void re::Matrix4::setScale(float x, float y, float z)
 }
 
 
-
 void re::Matrix4::setScale(const Vec3d& s)
 {
 	data_[0] = s.x;
 	data_[5] = s.y;
 	data_[10] = s.z;
 }
-
 
 
 void re::Matrix4::setScale(const float scale)
@@ -181,12 +167,10 @@ void re::Matrix4::setScale(const float scale)
 }
 
 
-
 float re::Matrix4::getScale() const
 {
 	return 1 / data_[0];
 }
-
 
 
 re::Vec3d re::Matrix4::getEulers() const
@@ -217,12 +201,10 @@ re::Vec3d re::Matrix4::getEulers() const
 }
 
 
-
 re::Vec3d re::Matrix4::getCenter() const
 {
 	return Vec3d(data_[12], data_[13], data_[14]);
 }
-
 
 
 re::Vec3d re::Matrix4::xAxis() const
@@ -231,19 +213,16 @@ re::Vec3d re::Matrix4::xAxis() const
 }
 
 
-
 re::Vec3d re::Matrix4::yAxis() const
 {
 	return Vec3d(data_[4], data_[5], data_[6]);
 }
 
 
-
 re::Vec3d re::Matrix4::zAxis() const
 {
 	return Vec3d(data_[8], data_[9], data_[10]);
 }
-
 
 
 void re::Matrix4::inverse()
@@ -274,7 +253,6 @@ void re::Matrix4::inverse()
 }
 
 
-
 void re::Matrix4::transpose()
 {
 	float result[16];
@@ -285,7 +263,6 @@ void re::Matrix4::transpose()
 
 	set(result);
 }
-
 
 
 re::Matrix4 re::Matrix4::toInversed() const
@@ -316,7 +293,6 @@ re::Matrix4 re::Matrix4::toInversed() const
 }
 
 
-
 re::Matrix4 re::Matrix4::toTransposed() const
 {
 	float result[16];
@@ -331,7 +307,6 @@ re::Matrix4 re::Matrix4::toTransposed() const
 }
 
 
-
 void re::Matrix4::rotate(float& x, float& y, float& z) const
 {
 	const float tx = x * data_[0] + y * data_[4] + z * data_[8];	// 0-0, 1-0, 2-0
@@ -343,19 +318,16 @@ void re::Matrix4::rotate(float& x, float& y, float& z) const
 }
 
 
-
 void re::Matrix4::rotate(float* vector) const
 {
 	rotate(vector[0], vector[1], vector[2]);
 }
 
 
-
 void re::Matrix4::rotate(Vec3d& vector) const
 {
 	rotate(vector.x, vector.y, vector.z);
 }
-
 
 
 void re::Matrix4::inverseRotate(float& x, float& y, float& z) const
@@ -369,19 +341,16 @@ void re::Matrix4::inverseRotate(float& x, float& y, float& z) const
 }
 
 
-
 void re::Matrix4::inverseRotate(float* vector) const
 {
 	inverseRotate(vector[0], vector[1], vector[2]);
 }
 
 
-
 void re::Matrix4::inverseRotate(Vec3d& vector) const
 {
 	inverseRotate(vector.x, vector.y, vector.z);
 }
-
 
 
 void re::Matrix4::translate(float& x, float& y, float& z) const
@@ -392,19 +361,16 @@ void re::Matrix4::translate(float& x, float& y, float& z) const
 }
 
 
-
 void re::Matrix4::translate(float* vector) const
 {
 	translate(vector[0], vector[1], vector[2]);
 }
 
 
-
 void re::Matrix4::translate(Vec3d& vector) const
 {
 	translate(vector.x, vector.y, vector.z);
 }
-
 
 
 void re::Matrix4::inverseTranslate(float& x, float& y, float& z) const
@@ -415,19 +381,16 @@ void re::Matrix4::inverseTranslate(float& x, float& y, float& z) const
 }
 
 
-
 void re::Matrix4::inverseTranslate(float* vector) const
 {
 	inverseTranslate(vector[0], vector[1], vector[2]);
 }
 
 
-
 void re::Matrix4::inverseTranslate(Vec3d& vector) const
 {
 	inverseTranslate(vector.x, vector.y, vector.z);
 }
-
 
 
 void re::Matrix4::scale(float& x, float& y, float& z) const
@@ -438,19 +401,16 @@ void re::Matrix4::scale(float& x, float& y, float& z) const
 }
 
 
-
 void re::Matrix4::scale(float* vector) const
 {
 	scale(vector[0], vector[1], vector[2]);
 }
 
 
-
 void re::Matrix4::scale(Vec3d& vector) const
 {
 	scale(vector.x, vector.y, vector.z);
 }
-
 
 
 void re::Matrix4::inverseScale(float& x, float& y, float& z) const
@@ -461,18 +421,17 @@ void re::Matrix4::inverseScale(float& x, float& y, float& z) const
 }
 
 
-
 void re::Matrix4::inverseScale(float* vector) const
 {
 	inverseScale(vector[0], vector[1], vector[2]);
 }
 
 
-
 void re::Matrix4::inverseScale(Vec3d& vector) const
 {
 	inverseScale(vector.x, vector.y, vector.z);
 }
+
 
 re::Matrix3 re::Matrix4::rotationMatrix() const
 {
@@ -484,19 +443,16 @@ re::Matrix3 re::Matrix4::rotationMatrix() const
 }
 
 
-
 bool re::Matrix4::operator == (const Matrix4& matrix) const
 {
 	return !memcmp(data_, matrix.data_, sizeof(float) * 16);
 }
 
 
-
 bool re::Matrix4::operator != (const Matrix4& matrix) const
 {
 	return memcmp(data_, matrix.data_, sizeof(float) * 16) != 0;
 }
-
 
 
 re::Matrix4& re::Matrix4::operator = (const Matrix4& matrix)
@@ -508,13 +464,13 @@ re::Matrix4& re::Matrix4::operator = (const Matrix4& matrix)
 }
 
 
-
 re::Matrix4 re::Matrix4::operator * (const Matrix4& matrix) const
 {
 	Matrix4 result(this);
 	result *= matrix;
 	return result;
 }
+
 
 re::Quaternion re::Matrix4::operator * (const Quaternion & q) const
 {
@@ -525,7 +481,6 @@ re::Quaternion re::Matrix4::operator * (const Quaternion & q) const
 	result.w = data_[3] * q.x + data_[7] * q.y + data_[11] * q.z + data_[15] * q.w;
 	return result;
 }
-
 
 
 void re::Matrix4::operator *= (const Matrix4& matrix)
@@ -558,12 +513,10 @@ void re::Matrix4::operator *= (const Matrix4& matrix)
 }
 
 
-
 re::Matrix4::operator float* ()
 {
 	return data_;
 }
-
 
 
 re::Matrix4::operator const float* () const
@@ -571,10 +524,12 @@ re::Matrix4::operator const float* () const
 	return data_;
 }
 
+
 float & re::Matrix4::operator[](size_t index)
 {
 	return data_[index];
 }
+
 
 const float & re::Matrix4::operator[](size_t index) const
 {

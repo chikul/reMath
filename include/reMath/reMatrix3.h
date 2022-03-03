@@ -16,7 +16,9 @@ namespace re
 	class Vec3d;
 	class Matrix4;
 
-	// Matrix3 Class.
+	/*
+	 * @brief Matrix3 Class.
+	 */
 	class Matrix3
 	{
 	public:

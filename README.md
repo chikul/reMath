@@ -6,6 +6,8 @@ It provides an easy way to operate such mathematical entities as 2D and 3D vecto
 
 The library is intended to be cross-platform, however, currently, only Windows binding is fully tested. Linux and Mac OS X support are planned for the nearest future.
 
+![Example](images/example01.png)
+
 ## Classes Overview
 
 There are currently five main classes in the library:

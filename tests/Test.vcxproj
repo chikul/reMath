@@ -178,7 +178,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="UtilsTest.cpp" />
-    <ClCompile Include="Vec2test.cpp" />
+    <ClCompile Include="Vec2Test.cpp" />
     <ClCompile Include="Vec3Test.cpp" />
   </ItemGroup>
   <ItemGroup>

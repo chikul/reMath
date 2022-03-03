@@ -18,12 +18,10 @@ re::Vec2d::Vec2d()
 }
 
 
-
 re::Vec2d::Vec2d(const Vec2d& vector)
 {
 	set(vector);
 }
-
 
 
 re::Vec2d::Vec2d(const Vec2d* vector)
@@ -32,12 +30,10 @@ re::Vec2d::Vec2d(const Vec2d* vector)
 }
 
 
-
 re::Vec2d::Vec2d(float value)
 {
 	set(value);
 }
-
 
 
 re::Vec2d::Vec2d(float xValue, float yValue)
@@ -46,12 +42,10 @@ re::Vec2d::Vec2d(float xValue, float yValue)
 }
 
 
-
 re::Vec2d::Vec2d(const float* vector)
 {
 	set(vector);
 }
-
 
 
 void re::Vec2d::set(const Vec2d& vector)
@@ -61,13 +55,11 @@ void re::Vec2d::set(const Vec2d& vector)
 }
 
 
-
 void re::Vec2d::set(float value)
 {
 	x = value;
 	y = value;
 }
-
 
 
 void re::Vec2d::set(float xValue, float yValue)
@@ -77,19 +69,16 @@ void re::Vec2d::set(float xValue, float yValue)
 }
 
 
-
 void re::Vec2d::set(const float* vector)
 {
 	memcpy(&d, vector, sizeof(d));
 }
 
 
-
 float re::Vec2d::length() const
 {
 	return sqrt(x * x + y * y);
 }
-
 
 
 float re::Vec2d::distanceTo(const Vec2d & vector) const
@@ -100,12 +89,10 @@ float re::Vec2d::distanceTo(const Vec2d & vector) const
 }
 
 
-
 bool re::Vec2d::isParallel(const Vec2d& vector) const
 {
 	return ((x / vector.x) == (y / vector.y));
 }
-
 
 
 void re::Vec2d::normalize()
@@ -124,13 +111,11 @@ void re::Vec2d::normalize()
 }
 
 
-
 void re::Vec2d::negate()
 {
 	x = -x;
 	y = -y;
 }
-
 
 
 float re::Vec2d::cross(const Vec2d& vector) const
@@ -139,12 +124,10 @@ float re::Vec2d::cross(const Vec2d& vector) const
 }
 
 
-
 float re::Vec2d::dot(const Vec2d& vector) const
 {
 	return (x * vector.x + y * vector.y);
 }
-
 
 
 bool re::Vec2d::operator == (const Vec2d& vector) const
@@ -153,12 +136,10 @@ bool re::Vec2d::operator == (const Vec2d& vector) const
 }
 
 
-
 bool re::Vec2d::operator != (const Vec2d& vector) const
 {
 	return (x != vector.x || y != vector.y);
 }
-
 
 
 re::Vec2d& re::Vec2d::operator = (const Vec2d& vector)
@@ -170,7 +151,6 @@ re::Vec2d& re::Vec2d::operator = (const Vec2d& vector)
 }
 
 
-
 re::Vec2d re::Vec2d::operator - () const
 {
 	Vec2d result(this);
@@ -179,12 +159,10 @@ re::Vec2d re::Vec2d::operator - () const
 }
 
 
-
 re::Vec2d re::Vec2d::operator + (const Vec2d& vector) const
 {
 	return Vec2d(x + vector.x, y + vector.y);
 }
-
 
 
 re::Vec2d re::Vec2d::operator - (const Vec2d& vector) const
@@ -193,19 +171,16 @@ re::Vec2d re::Vec2d::operator - (const Vec2d& vector) const
 }
 
 
-
 re::Vec2d re::operator * (float value, const re::Vec2d& vector)
 {
 	return re::Vec2d(vector.x * value, vector.y * value);
 }
 
 
-
 re::Vec2d re::operator * (const re::Vec2d& vector, float value)
 {
 	return re::Vec2d(vector.x * value, vector.y * value);
 }
-
 
 
 void re::Vec2d::operator += (const Vec2d& vector)
@@ -215,13 +190,11 @@ void re::Vec2d::operator += (const Vec2d& vector)
 }
 
 
-
 void re::Vec2d::operator += (float value)
 {
 	x += value;
 	y += value;
 }
-
 
 
 void re::Vec2d::operator -= (const Vec2d& vector)
@@ -231,13 +204,11 @@ void re::Vec2d::operator -= (const Vec2d& vector)
 }
 
 
-
 void re::Vec2d::operator -= (float value)
 {
 	x -= value;
 	y -= value;
 }
-
 
 
 void re::Vec2d::operator *= (float value)
@@ -247,13 +218,11 @@ void re::Vec2d::operator *= (float value)
 }
 
 
-
 void re::Vec2d::operator /= (float value)
 {
 	x /= value;
 	y /= value;
 }
-
 
 
 re::Vec2d::operator float* ()
@@ -262,19 +231,16 @@ re::Vec2d::operator float* ()
 }
 
 
-
 re::Vec2d::operator const float* () const
 {
 	return d;
 }
 
 
-
 float & re::Vec2d::operator[](size_t index)
 {
 	return d[index];
 }
-
 
 
 const float & re::Vec2d::operator[](size_t index) const

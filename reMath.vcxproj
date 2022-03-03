@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="CHANGELOG.md" />
+    <None Include="LICENSE" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

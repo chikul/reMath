@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+* An example of library usage.
+
 ### Updated
 
 * Docstrings conversion in progress.

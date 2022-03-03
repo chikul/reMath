@@ -26,31 +26,44 @@ namespace re
 
 		/**
 		 * @brief Copy constructor.
+		 * 
+		 * @param vector Source vector
 		 */
 		Vec2d(const Vec2d& vector);
 
 		/**
 		 * @brief Copy constructor from object pointer.
+		 * 
+		 * @param vector Source vector pointer
 		 */
 		explicit Vec2d(const Vec2d* vector);
 
 		/**
 		 * @brief Constructs a vector setting all the members to the passed value.
+		 * 
+		 * @param value Value to assign to all members
 		 */
 		explicit Vec2d(float value);
 
 		/**
 		 * @brief Constructs a vector setting all the members to the passed values.
+		 * 
+		 * @param xValue Value of X
+		 * @param yValue Value of Y
 		 */
 		Vec2d(float xValue, float yValue);
 
 		/**
 		 * @brief Constructs a vector setting all the members from an array in memory.
+		 * 
+		 * @param vector Source data array pointer
 		 */
 		explicit Vec2d(const float* vector);
 		
 		/**
 		 * @brief Move constructor.
+		 * 
+		 * @param vector Source vector
 		 */
 		Vec2d(Vec2d&& vector) = default;
 
@@ -61,36 +74,53 @@ namespace re
 
 		/**
 		 * @brief Set vector data.
+		 * 
+		 * @param vector Source vector
 		 */
 		void set(const Vec2d& vector);
 
 		/**
 		 * @brief Set vector data.
+		 * 
+		 * @param value Value to assign to all members
 		 */
 		void set(float value);
 
 		/**
 		 * @brief Set vector data.
+		 * 
+		 * @param xValue Value of X
+		 * @param yValue Value of Y
 		 */
 		void set(float xValue, float yValue);
 
 		/**
 		 * @brief Set vector data.
+		 * 
+		 * @param vector Source data array pointer
 		 */
 		void set(const float* vector);
 
 		/**
 		 * @brief Get vector magnitutde.
+		 * 
+		 * @return Vector length
 		 */
 		float length() const;
 
 		/**
 		 * @brief Calculate absolute distance to another vector.
+		 * 
+		 * @param vector Second vector
+		 * @return Distance between two vectors
 		 */
 		float distanceTo(const Vec2d& vector) const;
 
 		/**
 		 * @brief Parallel vectors check.
+		 * 
+		 * @param vector Second vector
+		 * @return True if vectors are parallel, False otherwise
 		 */
 		bool isParallel(const Vec2d& vector) const;
 
@@ -108,11 +138,17 @@ namespace re
 		 * @brief Calculate cross product and return the result.
 		 * Note: The cross-product of 2 vectors is only defined in 3D and 7D spaces.
 		 * This method computes the z-component of 2 vectors lying on the xy-plane.
+		 * 
+		 * @param vector Second vector
+		 * @return Z-component of 2 vectors lying on the xy-plane
 		 */
 		float cross(const Vec2d& vector) const;
 
 		/**
 		 * @brief Calculate dot product and return the result.
+		 * 
+		 * @param vector Second vector
+		 * @return Dot product of two vectors
 		 */
 		float dot(const Vec2d& vector) const;
 

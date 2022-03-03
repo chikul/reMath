@@ -18,12 +18,10 @@ float re::toRadians(float degrees)
 }
 
 
-
 float re::toDegrees(float radians)
 {
 	return radians * 180.f / PI;
 }
-
 
 
 unsigned long re::maxPowerOfTwo(unsigned long value)
@@ -42,19 +40,16 @@ unsigned long re::maxPowerOfTwo(unsigned long value)
 }
 
 
-
 unsigned char re::getHighNibble(unsigned char byte)
 {
 	return byte & 0xF0;
 }
 
 
-
 unsigned char re::getLowNibble(unsigned char byte)
 {
 	return byte & 0x0F;
 }
-
 
 
 re::Matrix4 re::perspective(float fovy, float aspect, float zNear, float zFar)
@@ -69,6 +64,7 @@ re::Matrix4 re::perspective(float fovy, float aspect, float zNear, float zFar)
 	matrix[14] = (2.f * zFar * zNear) / (zNear - zFar);
 	return matrix;
 }
+
 
 re::Matrix4 re::lookAt(const Vec3d& eye, const Vec3d& center, const Vec3d& up)
 {
@@ -110,6 +106,7 @@ re::Matrix4 re::lookAt(const Vec3d& eye, const Vec3d& center, const Vec3d& up)
 	
 	return result;
 }
+
 
 float re::triangleArea(const Vec3d & a, const Vec3d & b, const Vec3d & c)
 {

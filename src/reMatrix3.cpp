@@ -20,6 +20,7 @@ re::Matrix3::Matrix3()
 	loadIdentity();
 }
 
+
 re::Matrix3::Matrix3(const Matrix3 & matrix)
 {
 	if (&matrix == this)
@@ -28,6 +29,7 @@ re::Matrix3::Matrix3(const Matrix3 & matrix)
 	memcpy(data_, matrix.data_, sizeof(float) * 9);
 }
 
+
 re::Matrix3::Matrix3(const Matrix3 * matrix)
 {
 	if (matrix == this || !matrix)
@@ -35,6 +37,7 @@ re::Matrix3::Matrix3(const Matrix3 * matrix)
 
 	memcpy(data_, matrix->data_, sizeof(float) * 9);
 }
+
 
 re::Matrix3::Matrix3(const float * matrix)
 {
@@ -47,6 +50,7 @@ re::Matrix3::Matrix3(const float * matrix)
 	memcpy(data_, matrix, sizeof(float) * 9);
 }
 
+
 re::Matrix3::Matrix3(const Matrix4& matrix)
 {
 	memcpy(&data_[0], &matrix[0], sizeof(float) * 3);
@@ -54,11 +58,13 @@ re::Matrix3::Matrix3(const Matrix4& matrix)
 	memcpy(&data_[6], &matrix[8], sizeof(float) * 3);
 }
 
+
 void re::Matrix3::loadIdentity()
 {
 	memset(data_, 0, sizeof(float) * 9);
 	data_[0] = data_[4] = data_[8] = 1;
 }
+
 
 void re::Matrix3::set(const float * matrix)
 {
@@ -70,6 +76,7 @@ void re::Matrix3::set(const float * matrix)
 
 	memcpy(data_, matrix, sizeof(float) * 9);
 }
+
 
 void re::Matrix3::setRotation(float x, float y, float z)
 {
@@ -95,15 +102,18 @@ void re::Matrix3::setRotation(float x, float y, float z)
 	data_[8] = cx * cy;						/* 2-2 /                      */
 }
 
+
 void re::Matrix3::setRotation(const float * r)
 {
 	setRotation(r[0], r[1], r[2]);
 }
 
+
 void re::Matrix3::setRotation(const Vec3d & r)
 {
 	setRotation(r.x, r.y, r.z);
 }
+
 
 re::Vec3d re::Matrix3::getEulers() const
 {
@@ -131,6 +141,7 @@ re::Vec3d re::Matrix3::getEulers() const
 	return result;
 }
 
+
 void re::Matrix3::rotate(float & x, float & y, float & z) const
 {
 	const float tx = x * data_[0] + y * data_[3] + z * data_[6];	// 0-0, 1-0, 2-0
@@ -141,15 +152,18 @@ void re::Matrix3::rotate(float & x, float & y, float & z) const
 	z = tz;
 }
 
+
 void re::Matrix3::rotate(float * vector) const
 {
 	rotate(vector[0], vector[1], vector[2]);
 }
 
+
 void re::Matrix3::rotate(Vec3d & vector) const
 {
 	rotate(vector.x, vector.y, vector.z);
 }
+
 
 void re::Matrix3::inverseRotate(float & x, float & y, float & z) const
 {
@@ -161,25 +175,30 @@ void re::Matrix3::inverseRotate(float & x, float & y, float & z) const
 	z = tz;
 }
 
+
 void re::Matrix3::inverseRotate(float * vector) const
 {
 	inverseRotate(vector[0], vector[1], vector[2]);
 }
+
 
 void re::Matrix3::inverseRotate(Vec3d & vector) const
 {
 	inverseRotate(vector.x, vector.y, vector.z);
 }
 
+
 bool re::Matrix3::operator == (const Matrix3 & matrix) const
 {
 	return !memcmp(data_, matrix.data_, sizeof(float) * 9);
 }
 
+
 bool re::Matrix3::operator != (const Matrix3 & matrix) const
 {
 	return memcmp(data_, matrix.data_, sizeof(float) * 9) != 0;
 }
+
 
 re::Matrix3 & re::Matrix3::operator = (const Matrix3 & matrix)
 {
@@ -189,20 +208,24 @@ re::Matrix3 & re::Matrix3::operator = (const Matrix3 & matrix)
 	return *this;
 }
 
+
 re::Matrix3::operator float * ()
 {
 	return data_;
 }
+
 
 re::Matrix3::operator const float * () const
 {
 	return data_;
 }
 
+
 float & re::Matrix3::operator[](size_t index)
 {
 	return data_[index];
 }
+
 
 const float & re::Matrix3::operator[](size_t index) const
 {

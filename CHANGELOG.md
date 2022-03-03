@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* An example of library usage.
+* An SDL-based OpenGL example of library usage.
 
 ### Updated
 

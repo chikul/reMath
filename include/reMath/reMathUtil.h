@@ -55,7 +55,7 @@ namespace re
 	 */
 	unsigned char getHighNibble(unsigned char byte);
 
-    /**
+	/**
 	 * @brief Get lower half of the byte.
 	 * 
 	 * @param byte A byte to extract the low nibble from
@@ -63,7 +63,7 @@ namespace re
 	 */
 	unsigned char getLowNibble(unsigned char byte);
 
-    /**
+	/**
 	 * @brief Calculates a perspective projection matrix.
 	 *
 	 * @param fovy Field of view angle, in degrees, in the y direction
@@ -84,7 +84,7 @@ namespace re
 	 */
 	Matrix4 lookAt(const Vec3d& eye, const Vec3d& center, const Vec3d& up);
 
-    /**
+	/**
 	 * @brief Calculates the area of a triangle defined by three vertices in 3D space.
 	 *
 	 * @param a First vertex

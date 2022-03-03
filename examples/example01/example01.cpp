@@ -14,8 +14,8 @@ struct Quad
 };
 
 
-const short WIDTH = 1024;
-const short HEIGHT = 768;
+const short WIDTH = 800;
+const short HEIGHT = 600;
 auto lookAtMatrix = re::lookAt(re::Vec3d(0.0f, 0.0f, 6.0f), re::Vec3d(0.0f, 0.0f, 0.0f), re::Vec3d(0.0f, 1.0f, 0.0f));
 auto perspectiveMatrix = re::perspective(45.0f, static_cast<float>(WIDTH) / HEIGHT, 0.3f, 100.0f);
 
@@ -25,7 +25,6 @@ std::vector<Quad> faces;
 
 float ambient_[] = { .02f, .02f, .02f, 1.f };
 float diffuse_[] = { 0, .5f, 0, 1.f };
-//float specular_[] = { .35f, .35f, .35f, 1.f };
 float specular_[] = { .15f, .15f, 0, 1.f };
 float emissive_[] = { 0, 0, 0, 1 };
 float shininess_ = 38.4f;
@@ -70,10 +69,9 @@ void createTorus(int sliceCount, int loopCount)
 	{
 		for (auto j = 0; j < loopCount; j++)
 		{
-			int index2, index3, index4;
 			const bool iOverlapped = i + 1 == sliceCount;
-
-			index2 = iOverlapped ? j : i * loopCount + j + loopCount;
+			const int index2 = iOverlapped ? j : i * loopCount + j + loopCount;
+			int index3, index4;
 
 			if (j + 1 == loopCount)
 			{
@@ -89,7 +87,6 @@ void createTorus(int sliceCount, int loopCount)
 			faces.push_back({ i * loopCount + j, index2, index3, index4 });
 		}
 	}
-
 
 	std::vector<re::Vec3d> faceNormals;
 	for (auto & face : faces)
@@ -138,7 +135,7 @@ SDL_Window* createSdlWindow()
 	SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
 	SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
 
-	return SDL_CreateWindow("Example 1", 100, 100, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
+	return SDL_CreateWindow("reMath - Example 1", 100, 100, WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
 }
 
 
@@ -203,7 +200,7 @@ void main()
 	std::cout << "GL_RENDERER : " << glGetString(GL_RENDERER) << std::endl;
 
 	setUpOpenGl();
-	createTorus(20, 20);
+	createTorus(16, 30);
 
 	SDL_Event windowEvent;
 	float angle = 0;

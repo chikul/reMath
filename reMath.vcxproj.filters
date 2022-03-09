@@ -18,6 +18,7 @@
     <None Include="CHANGELOG.md" />
     <None Include="README.md" />
     <None Include="LICENSE" />
+    <None Include="TODO.md" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\reMathUtil.cpp">
